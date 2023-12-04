@@ -19,7 +19,7 @@ export default function Footer() {
             <div className="flex flex-col justify-center items-center">
                 <div className="flex flex-col justify-center items-center md:flex-row md:gap-48 md:items-start my-16">
                     <h1 className="border-4 divide-solid border-yellow px-3 font-black text-5xl font-roboto"> COGIP </h1>
-                    <div className="flex flex-col gap-y-3">
+                    <div className="flex flex-col gap-y-3 my-3">
                         <div className="flex flex-row gap-4">
                             <img src={location} alt="location" /> 
                             <p className="text-sm">345 Faulconer Drive, Suite 4 • Charlottesville, CA, 12345</p>
