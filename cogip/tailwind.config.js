@@ -11,7 +11,12 @@ export default {
       'assistant':['Assistant', 'sans-serif'],
       'inter': ['Inter', 'sans-serif'],
     },
-    extend: {},
+
+    extend: {
+      colors:{
+        'yellow':'#F9DE4E'
+      },
+    },
   },
   plugins: [],
 }

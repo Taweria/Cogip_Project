@@ -1,19 +1,14 @@
-import {Link} from "react-router-dom"
+import HambergerMenu from "./hamberger-menu.jsx";
 
 const NavHeader = () => {
-  return(
-      <nav className={"font-roboto"}>
-            <h1 className={"text-2xl font-bold "}>cogip</h1>
-            <div>
-                <ul>
-                    <li><Link to={"/home"}>Home</Link></li>
-                    <li><Link to={"/invoices"}>Invoices</Link> </li>
-                    <li><Link to={"/companies"}>Companies</Link></li>
-                    <li><Link to={"/contacts"}>Contacts</Link></li>
-                </ul>
+    return (
+        <nav className={"font-roboto font-bold flex justify-between mx-5 mt-3"}>
+            <h1 className={"text-2xl  "}>cogip</h1>
+            <div className={"flex justify-between"}>
+                <HambergerMenu/>
             </div>
-      </nav>
-  )
+        </nav>
+    )
 }
 
 export default NavHeader;
