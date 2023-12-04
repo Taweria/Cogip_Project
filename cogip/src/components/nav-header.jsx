@@ -1,4 +1,4 @@
-import HamburgerMenu from "./hamberger-menu.jsx";
+import HamburgerMenu from "./hamburger-menu.jsx";
 import {motion} from "framer-motion";
 
 const NavHeader = () => {

@@ -1,6 +1,7 @@
 import NavHeader from "../components/nav-header.jsx";
 import {useEffect, useState} from "react";
 import {useIsHome} from "../hooks/useIsHome.jsx";
+import {motion} from "framer-motion";
 
 
 const Header = () => {
@@ -13,11 +14,27 @@ const Header = () => {
                 <NavHeader/>
                 {home && (
                     <div className={"flex flex-col md:flex-row justify-around mx-auto items-center"}>
-                        <div className={"w-1/3"}>
+                        <motion.div
+                            initial={{x: -500}}
+                            animate={{x: 0}}
+                            transition={{
+                                duration: 1,
+                                type: 'spring',
+                                ease: 'easeIn'
+                            }}
+                            className={"w-1/3"}>
                             <h2 className={"uppercase font-inter font-black text-center text-5xl "}>manage your
                                 customers and invoices easly</h2>
-                        </div>
-                        <img className={"w-1/2"} src={"/src/assets/DrawKit_Vector_Illustration_Project_Manager.svg"}
+                        </motion.div>
+                        <motion.img
+                            initial={{x: 500}}
+                            animate={{x: 0}}
+                            transition={{
+                                duration: 1,
+                                type: 'spring',
+                                ease: 'easeIn'
+                            }}
+                            className={"w-1/2"} src={"/src/assets/DrawKit_Vector_Illustration_Project_Manager.svg"}
                              alt={"projectManager"}/>
                     </div>
                 )}
