@@ -2,7 +2,7 @@
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    `./src/**/*.{js,ts,jsx,tsx}`,
 
   ],
   theme: {
@@ -11,7 +11,12 @@ export default {
       'assistant':['Assistant', 'sans-serif'],
       'inter': ['Inter', 'sans-serif'],
     },
-    extend: {},
+
+    extend: {
+      colors:{
+        'yellow':'#F9DE4E'
+      },
+    },
   },
   plugins: [],
 }

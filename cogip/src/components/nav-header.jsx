@@ -1,9 +1,14 @@
-const NavHeader = () => {
-  return(
-      <nav>
+import HambergerMenu from "./hamberger-menu.jsx";
 
-      </nav>
-  )
+const NavHeader = () => {
+    return (
+        <nav className={"font-roboto font-bold flex justify-between mx-5 mt-3"}>
+            <h1 className={"text-2xl  "}>cogip</h1>
+            <div className={"flex justify-between"}>
+                <HambergerMenu/>
+            </div>
+        </nav>
+    )
 }
 
 export default NavHeader;
