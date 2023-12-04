@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import { Fade as Hamburger } from 'hamburger-react';
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-const HambergerMenu = () => {
+const HamburgerMenu = () => {
     const listNav = [
         {
             url: '/',
@@ -24,24 +25,64 @@ const HambergerMenu = () => {
 
     const [isOpen, setOpen] = useState(false);
 
+    const menuVariants = {
+        hidden: { opacity: 0, height: 0 },
+        visible: { opacity: 1, height: 'auto' },
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: -10 },
+        visible: { opacity: 1, y: 0 },
+    };
+
     return (
         <div className="md:flex md:justify-between md:w-full font-medium">
-            <div className="md:hidden bg-gray-100">
+            <div className="md:hidden">
                 <Hamburger toggled={isOpen} toggle={setOpen} />
             </div>
-            <ul className={`md:flex md:space-x-4 ${isOpen ? 'block border-b  mb-3' : 'hidden'}`}>
-                {listNav.map((item) => (
-                    <li key={item.url} className={"btn-link-default hover:border hover:border-black"}>
-                        <Link to={item.url}>{item.content}</Link>
-                    </li>
-                ))}
-            </ul>
-            <ul className={`md:flex md:space-x-4  ${isOpen ? 'block  mb-3' : 'hidden'}`}>
-                <li className={"btn-link-default bg-white rounded-xl "}><Link to={"/signUp"}>Sign up</Link></li>
-                <li className={"btn-link-default"}><Link to={"/login"}>Login</Link></li>
-            </ul>
+
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.ul
+                        className="md:flex md:space-x-4 block border-b mb-3"
+                        variants={menuVariants}
+                        initial="hidden"
+                        animate="visible"
+                        exit="hidden"
+                    >
+                        {listNav.map((item) => (
+                            <motion.li
+                                key={item.url}
+                                className="btn-link-default hover:border hover:border-black"
+                                variants={itemVariants}
+                            >
+                                <Link to={item.url}>{item.content}</Link>
+                            </motion.li>
+                        ))}
+                    </motion.ul>
+                )}
+            </AnimatePresence>
+
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.ul
+                        className="md:flex md:space-x-4 block mb-3"
+                        variants={menuVariants}
+                        initial="hidden"
+                        animate="visible"
+                        exit="hidden"
+                    >
+                        <motion.li className="btn-link-default bg-white rounded-xl" variants={itemVariants}>
+                            <Link to="/signUp">Sign up</Link>
+                        </motion.li>
+                        <motion.li className="btn-link-default" variants={itemVariants}>
+                            <Link to="/login">Login</Link>
+                        </motion.li>
+                    </motion.ul>
+                )}
+            </AnimatePresence>
         </div>
     );
-}
+};
 
-export default HambergerMenu;
+export default HamburgerMenu;
