@@ -29,9 +29,9 @@ const HambergerMenu = () => {
             <div className="md:hidden bg-gray-100">
                 <Hamburger toggled={isOpen} toggle={setOpen} />
             </div>
-            <ul className={`md:flex md:space-x-4 ${isOpen ? 'block border-b mb-3' : 'hidden'}`}>
+            <ul className={`md:flex md:space-x-4 ${isOpen ? 'block border-b  mb-3' : 'hidden'}`}>
                 {listNav.map((item) => (
-                    <li key={item.url} className={"px2 py-1 text-center hover:border"}>
+                    <li key={item.url} className={"px2 py-1 text-center hover:border hover:border-black"}>
                         <Link to={item.url}>{item.content}</Link>
                     </li>
                 ))}
