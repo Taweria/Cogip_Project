@@ -25,7 +25,7 @@ const HambergerMenu = () => {
     const [isOpen, setOpen] = useState(false);
 
     return (
-        <div className="md:flex md:justify-end">
+        <div className="md:flex md:justify-between md:w-full font-medium">
             <div className="md:hidden bg-gray-100">
                 <Hamburger toggled={isOpen} toggle={setOpen} />
             </div>
