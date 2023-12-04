@@ -24,7 +24,7 @@ export default function Footer() {
                             <img src={location} alt="location" /> 
                             <p className="text-sm">345 Faulconer Drive, Suite 4 • Charlottesville, CA, 12345</p>
                         </div>
-                        <div className="flex flex-row gap-4">
+                        <div className="flex flex-row gap-3">
                             <img src={phone} alt="phone" />
                             <p className="text-sm">(123) 456-7890</p>
                         </div>
@@ -50,10 +50,10 @@ export default function Footer() {
                 <div className="w-10/12 border-t-2 divide-solid border-slate-300 flex flex-col justify-between items-center my-3 md:flex-row">
                     <nav>
                         <ul className="flex flex-row gap-4 my-3 md:gap-8">
-                            <li className="text-sm font-medium">HOME</li>
-                            <li className="text-sm font-medium">INVOICES</li>
-                            <li className="text-sm font-medium">COMPANIES</li>
-                            <li className="text-sm font-medium">CONTACTS</li>
+                            <li className="text-sm font-medium"><Link to="/home">HOME</Link></li>
+                            <li className="text-sm font-medium"><Link to="/invoices">INVOICES</Link></li>
+                            <li className="text-sm font-medium"><Link to="/companies">COMPANIES</Link></li>
+                            <li className="text-sm font-medium"><Link to="/contact">CONTACTS</Link></li>
                             <li className="text-sm font-medium">PRIVACY POLICY</li>
                         </ul>
                     </nav>
