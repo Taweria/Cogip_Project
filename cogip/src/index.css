@@ -3,3 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
+.btn-link-default{
+    @apply text-center px-2 py-1
+}

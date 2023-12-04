@@ -5,7 +5,7 @@ import { useState } from "react";
 const HambergerMenu = () => {
     const listNav = [
         {
-            url: '/home',
+            url: '/',
             content: 'Home'
         },
         {
@@ -31,14 +31,14 @@ const HambergerMenu = () => {
             </div>
             <ul className={`md:flex md:space-x-4 ${isOpen ? 'block border-b  mb-3' : 'hidden'}`}>
                 {listNav.map((item) => (
-                    <li key={item.url} className={"px2 py-1 text-center hover:border hover:border-black"}>
+                    <li key={item.url} className={"btn-link-default hover:border hover:border-black"}>
                         <Link to={item.url}>{item.content}</Link>
                     </li>
                 ))}
             </ul>
             <ul className={`md:flex md:space-x-4  ${isOpen ? 'block  mb-3' : 'hidden'}`}>
-                <li className={"text-center px-2 py-1 bg-white rounded-xl "}><Link to={"/signUp"}>Sign up</Link></li>
-                <li className={"text-center"}><Link to={"/login"}>Login</Link></li>
+                <li className={"btn-link-default bg-white rounded-xl "}><Link to={"/signUp"}>Sign up</Link></li>
+                <li className={"btn-link-default"}><Link to={"/login"}>Login</Link></li>
             </ul>
         </div>
     );
