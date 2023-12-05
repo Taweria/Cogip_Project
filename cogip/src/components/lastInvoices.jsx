@@ -7,10 +7,12 @@ const lastInvoices = () => {
              <div className="flex justify-center">
                  <table className="w-11/12 py-6 mx-24 font-roboto font-semibold">
                      <thead className="bg-yellow">
-                             <td>Invoice number</td>
-                             <td>Dates due</td>
-                             <td>Company</td>
-                             <td>Created at</td>
+                        <tr>
+                            <td>Invoice number</td>
+                            <td>Dates due</td>
+                            <td>Company</td>
+                            <td>Created at</td>
+                        </tr>
                      </thead>
                      <tbody className="w-11/12">
                          <tr>

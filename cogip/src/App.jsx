@@ -5,6 +5,7 @@ import WorkBetter from "./components/workbetter.jsx";
 import LastInvoices from "./components/lastInvoices.jsx";
 import LastContacts from "./components/lastContacts.jsx";
 import LastCompanies from "./components/lastCompanies.jsx";
+import ContactPeople from "./layouts/contactPeople.jsx";
 
 
 const router = createBrowserRouter([
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
                 <LastContacts />
                 <LastCompanies />
                 <WorkBetter />
+                <ContactPeople />
                 <Footer />
             </>
         ),

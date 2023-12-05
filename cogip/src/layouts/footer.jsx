@@ -47,7 +47,7 @@ export default function Footer() {
                         </div>
                     </div>
                 </div>
-                <div className="w-10/12 border-t-2 divide-solid border-slate-300 flex flex-col justify-between items-center my-3 md:flex-row">
+                <div className="w-10/12 border-t-2 divide-solid border-slate-100 flex flex-col justify-between items-center my-3 md:flex-row">
                     <nav>
                         <ul className="flex flex-row gap-4 my-3 md:gap-8">
                             <li className="text-sm font-medium"><Link to="/">HOME</Link></li>
