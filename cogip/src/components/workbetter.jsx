@@ -9,7 +9,7 @@ const WorkBetter = () => {
             </div>
             <div className="relative w-7/12 h-36 md:h-screen">
                 <img src={rect17} alt="rect" className="absolute w-full h-full bottom-0"/>
-                <img src={workBetter} alt="work" className="absolute w-8/12 top-0 right-0"/>
+                <img src={workBetter} alt="work" className="absolute w-8/12 top-0 right-0 sm:right-24"/>
             </div>
         </div>
     )
