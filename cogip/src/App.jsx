@@ -6,6 +6,7 @@ import LastInvoices from "./components/lastInvoices.jsx";
 import LastContacts from "./components/lastContacts.jsx";
 import LastCompanies from "./components/lastCompanies.jsx";
 import ContactPeople from "./layouts/contactPeople.jsx";
+import InfosCompany from "./layouts/infosCompany.jsx";
 
 
 const router = createBrowserRouter([
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
         element: (
             <>
                 <Header />
+                <InfosCompany name="Pied Pipper" tva="BE87 876 767 565" country="Belgium" type="Supplier"/>
                 <ContactPeople />
                 <LastInvoices />
                 <Footer />

@@ -1,6 +1,6 @@
 import manager from '../assets/manager.svg';
 
-const lastInvoices = () => {
+const LastInvoices = () => {
     return (
          <div className="w-full mt-16">
              <h2 className="text-6xl font-black my-16 mx-24 font-inter">Last invoices</h2>
@@ -55,4 +55,4 @@ const lastInvoices = () => {
     )
 }
 
-export default lastInvoices;
+export default LastInvoices;
