@@ -7,11 +7,13 @@ const LastContacts = () => {
              <div className="flex justify-center">
                  <table className="w-11/12 mx-24 py-6 font-roboto font-semibold">
                      <thead className="bg-yellow">
-                             <td>Name</td>
-                             <td>Phone</td>
-                             <td>Mail</td>
-                             <td>Company</td>
-                             <td>Created at</td>
+                        <tr>
+                            <td>Name</td>
+                            <td>Phone</td>
+                            <td>Mail</td>
+                            <td>Company</td>
+                            <td>Created at</td>
+                        </tr>
                      </thead>
                      <tbody className="w-11/12">
                          <tr>

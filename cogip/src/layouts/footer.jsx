@@ -15,7 +15,7 @@ import {Link} from "react-router-dom";
 export default function Footer() {
 
     return (
-        <div className="w-10/12 mx-auto my-5 border-t-2 divide-solid border-yellow">
+        <div className="w-10/12 mx-auto my-5 border-t-2 divide-solid border-yellow mt-24">
             <div className="flex flex-col justify-center items-center">
                 <div className="flex flex-col justify-center items-center md:flex-row md:gap-48 md:items-start my-16">
                     <h1 className="border-4 divide-solid border-yellow px-3 font-black text-5xl font-roboto"> COGIP </h1>
@@ -47,7 +47,7 @@ export default function Footer() {
                         </div>
                     </div>
                 </div>
-                <div className="w-10/12 border-t-2 divide-solid border-slate-300 flex flex-col justify-between items-center my-3 md:flex-row">
+                <div className="w-10/12 border-t-2 divide-solid border-slate-100 flex flex-col justify-between items-center my-3 md:flex-row">
                     <nav>
                         <ul className="flex flex-row gap-4 my-3 md:gap-8">
                             <li className="text-sm font-medium"><Link to="/">HOME</Link></li>
