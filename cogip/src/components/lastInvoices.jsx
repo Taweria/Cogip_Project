@@ -49,7 +49,7 @@ const lastInvoices = () => {
                  </table>
              </div>
              <div className="relative">
-                <img src={manager} alt="manager" className="absolute right-0 mt-16"/>
+                <img src={manager} alt="manager" className={"absolute right-0 mt-16 " + (window.location.pathname == "/" ? "" : "opacity-0") } />
             </div>
         </div>
     )
