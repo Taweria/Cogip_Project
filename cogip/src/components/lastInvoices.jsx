@@ -3,7 +3,7 @@ import manager from '../assets/manager.svg';
 const LastInvoices = () => {
     return (
          <div className="w-full mt-16">
-             <h2 className="text-6xl font-black my-16 mx-24 font-inter">Last invoices</h2>
+             <h2 className="text-6xl font-black my-16 mx-12 md:mx-24 font-inter">Last invoices</h2>
              <div className="flex justify-center">
                  <table className="w-11/12 py-6 mx-24 font-roboto font-semibold">
                      <thead className="bg-yellow">
