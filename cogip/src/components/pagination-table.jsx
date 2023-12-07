@@ -6,11 +6,7 @@ import Pagination from './pagination.jsx';
 const PaginationTable = ({data, loading, tableKey, tableHead}) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [dataPerPage] = useState(10);
-
-    console.log(data)
-    console.log(tableKey)
-    console.log(tableHead)
-    console.log(loading)
+    
     // Get current data
     const indexOfLastData = currentPage * dataPerPage;
     const indexOfFirstData = indexOfLastData - dataPerPage;
