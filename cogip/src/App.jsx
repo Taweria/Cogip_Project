@@ -12,6 +12,7 @@ import DynamicTitle from "./components/dynamic-title.jsx";
 import AllInvoiceTable from "./layouts/allInvoicesTable.jsx";
 import AllContactsTable from "./layouts/allContactsTable.jsx";
 import AllCompaniesTable from "./layouts/allCompaniesTable.jsx";
+import Table from "./components/table.jsx";
 
 
 const router = createBrowserRouter([
@@ -25,10 +26,10 @@ const router = createBrowserRouter([
                 <LastCompanies />
                 <WorkBetter />
                 <Footer />
+                <Table/>
             </>
         ),
     },
-
     {
          path: '/showcompany',
         element: (
@@ -38,6 +39,7 @@ const router = createBrowserRouter([
                 <ContactPeople />
                 <LastInvoices />
                 <Footer />
+
             </>
         ),
     },
@@ -94,6 +96,7 @@ function App() {
   return (
     <>
       <RouterProvider router={router}/>
+
     </>
   )
 }
