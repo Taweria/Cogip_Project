@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import getAvatar from '../api/avatar.js';
+import getAvatar from '../api/getAvatar.js';
 
 const People = () => {
      const [avatar, setAvatar] = useState([]);
 
-    // generate random string for avatar
+    // generate random string for avatar -> TO CHANGE LATER
     const characters ="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     function generateString(length) {
         let result = " ";

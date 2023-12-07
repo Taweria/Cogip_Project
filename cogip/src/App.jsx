@@ -7,6 +7,11 @@ import LastContacts from "./components/lastContacts.jsx";
 import LastCompanies from "./components/lastCompanies.jsx";
 import ContactPeople from "./layouts/contactPeople.jsx";
 import InfosCompany from "./layouts/infosCompany.jsx";
+import Page404 from "./pages/Page404.jsx";
+import DynamicTitle from "./components/dynamic-title.jsx";
+import AllInvoiceTable from "./layouts/allInvoicesTable.jsx";
+import AllContactsTable from "./layouts/allContactsTable.jsx";
+import AllCompaniesTable from "./layouts/allCompaniesTable.jsx";
 
 
 const router = createBrowserRouter([
@@ -35,7 +40,54 @@ const router = createBrowserRouter([
                 <Footer />
             </>
         ),
-    }
+    },
+
+    {
+         path: '/invoices',
+        element: (
+            <>
+                <Header />
+                <DynamicTitle title="All invoices"/>
+                <AllInvoiceTable />
+                <Footer />
+            </>
+        ),
+    },
+
+    {
+         path: '/contact',
+        element: (
+            <>
+                <Header />
+                <DynamicTitle title="All contacts"/>
+                <AllContactsTable />
+                <Footer />
+            </>
+        ),
+    },
+
+    {
+         path: '/companies',
+        element: (
+            <>
+                <Header />
+                <DynamicTitle title="All companies"/>
+                <AllCompaniesTable />
+                <Footer />
+            </>
+        ),
+    },
+
+    {
+         path: '*',
+        element: (
+            <>
+                <Header />
+                <Page404 />
+                <Footer />
+            </>
+        ),
+    },
 ])
 function App() {
 
