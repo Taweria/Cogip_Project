@@ -12,6 +12,7 @@ import DynamicTitle from "./components/dynamic-title.jsx";
 import AllInvoiceTable from "./layouts/allInvoicesTable.jsx";
 import AllContactsTable from "./layouts/allContactsTable.jsx";
 import AllCompaniesTable from "./layouts/allCompaniesTable.jsx";
+import InfosContact from "./layouts/infosContact.jsx";
 
 
 const router = createBrowserRouter([
@@ -72,7 +73,19 @@ const router = createBrowserRouter([
             <>
                 <Header />
                 <DynamicTitle title="All companies"/>
+                <InfosCompany name="Pied Pipper" tva="BE87 876 767 565" country="Belgium" type="Supplier"/>
                 <AllCompaniesTable />
+                <Footer />
+            </>
+        ),
+    },
+
+    {
+         path: '/showcontact',
+        element: (
+            <>
+                <Header />
+                <InfosContact contact="Jane Smith" phone="0476 76 76 76" mail="smith@gmail.com" company="Pied Pipper"/>
                 <Footer />
             </>
         ),
