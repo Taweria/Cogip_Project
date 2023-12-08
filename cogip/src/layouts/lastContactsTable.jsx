@@ -2,6 +2,7 @@ import light from '../assets/light.svg';
 import React, { useState, useEffect } from 'react';
 import getData from "../api/getData.js";
 import Table from "../components/table-without-pagination.jsx";
+import InputSearch from "../components/input-search.jsx";
 
 const LastContacts = () => {
     const [data, setData] = useState([]);
@@ -17,8 +18,8 @@ const LastContacts = () => {
     const tableKey = ["userId", "id", "title", "body"];
     // Table heads
     const tableHead = ["Name", "Phone", "Mail", "Company", "Created at"];
-
     return (
+
        <div className="w-full mt-48">
              <h2 className="text-6xl font-black  mx-24 font-inter">Last contacts</h2>
              <div className="flex justify-center">
