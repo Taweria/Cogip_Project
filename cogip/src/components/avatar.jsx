@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import getAvatar from '../api/getAvatar.js';
 
-const People = () => {
+const Avatar = () => {
      const [avatar, setAvatar] = useState([]);
 
     // generate random string for avatar -> TO CHANGE LATER
@@ -30,14 +30,10 @@ const People = () => {
    
     
     return (
-         <div className="bg-slate-100 w-11/12 rounded-xl flex flex-col justify-center items-center my-9 mx-auto md:mx-0 md:flex-row md:gap-8 md:w-2/12">
-            <img src={`data:image/svg+xml,${encodeURIComponent(avatar)}`} alt="avatar" className="rounded-full w-24 mt-10 md:mt-0" />
-            <div className="flex gap-2 my-8 md:flex-col md:gap-0">
-                <p className="text-xl font-black font-roboto">John</p>
-                <p className="text-xl font-black font-roboto">Doe</p>
-            </div>
-         </div>
+         <>
+            <img src={`data:image/svg+xml,${encodeURIComponent(avatar)}`} alt="avatar" className="rounded-full w-full h-full" />
+         </>
     )
 }
 
-export default People;
+export default Avatar;
