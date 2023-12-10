@@ -26,7 +26,6 @@ const Table = () => {
         const matchingData = data.filter(item =>
             filteredResults.some(title => item.title === title)
         );
-
         setFilter(matchingData)
     };
     const title = data.map(data => data.title)
