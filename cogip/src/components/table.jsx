@@ -27,15 +27,15 @@ const Table = ({dataTable, elementFilter, isFilter}) => {
     return (
 
         <>
-            <div className={"card"}>
+            <div className={"mx-auto flex justify-center w-4/5"}>
                 {isFilter && elementFilter && (
                     <InputSearch placeholder={"test"} data={elementFilter} dataFiltered={handleDataFiltered}/>
                 )}
-                <DataTable  value={filter}  tableStyle={{ maxWidth: '50%' }} >
+                <DataTable className={"font-black font-roboto"}   value={filter} tableStyle={{ maxWidth: '100%' }} >
                     {columns.map((col, index) => (
                         <Column
                                  key={index} field={col}
-                                 header={<div className={'bg-yellow-500 p-2'}>{col.charAt(0).toUpperCase() + col.slice(1)}</div>}
+                                 header={col.charAt(0).toUpperCase() + col.slice(1)}
                                  className={index % 2 === 0 ? 'bg-white' : 'bg-gray'}
                         />
                     ))}

@@ -17,3 +17,7 @@
 .p-datatable-thead {
     @apply bg-yellow
 }
+
+tr {
+    @apply border-b
+}
