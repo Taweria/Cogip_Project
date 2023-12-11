@@ -13,6 +13,7 @@ import AllInvoiceTable from "./layouts/allInvoicesTable.jsx";
 import AllContactsTable from "./layouts/allContactsTable.jsx";
 import AllCompaniesTable from "./layouts/allCompaniesTable.jsx";
 import Table from "./components/table.jsx";
+import getData from "./api/getData.js";
 
 
 const router = createBrowserRouter([
@@ -26,7 +27,6 @@ const router = createBrowserRouter([
                 <LastCompanies />
                 <WorkBetter />
                 <Footer />
-                <Table/>
             </>
         ),
     },
@@ -92,6 +92,7 @@ const router = createBrowserRouter([
     },
 ])
 function App() {
+
 
   return (
     <>
