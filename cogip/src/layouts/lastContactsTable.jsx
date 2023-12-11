@@ -33,7 +33,7 @@ const LastContacts = () => {
         </div>
        * */
 
-        <Table object={data}  isFilter={false}/>
+        <Table dataTable={data} elementFilter={title} isFilter={false}/>
     )
 }
 
