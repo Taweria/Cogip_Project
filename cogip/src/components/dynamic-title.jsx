@@ -3,7 +3,7 @@ const DynamicTitle = ({title}) => {
     const path = window.location.pathname
 
     return (
-        <div className="my-12 ">
+        <div className="mt-12  mb-20">
             <div className="relative md:pr-28">
                   <h2 className="text-5xl md:text-6xl font-black font-inter md:w-full relative z-10">{title}</h2>
                 {path !== "/" && (
