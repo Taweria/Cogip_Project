@@ -1,14 +1,47 @@
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
+import {useEffect, useState} from "react";
+import InputSearch from "./input-search.jsx";
 
-const Table = () => {
+/**
+ * Table allows data to be displayed with an object. The object in question must not contain a
+ * @param(object) Object can't contain additional objects, otherwise columns won't work
+ * @param(elementFilter) Is the element used to filter the elements of the array. This element must be one of the columns of the object
+ * @param(isFilter) Boolean to display the filter
+ * */
+const Table = ({dataTable, elementFilter, isFilter}) => {
+
+    const [filter, setFilter] = useState( [])
+    useEffect(() => {
+        setFilter(dataTable)
+    }, [dataTable]);
+    const columns = dataTable.length > 0 ? Object.keys(dataTable[0]) : [];
+    console.log(dataTable)
+
+    const handleDataFiltered = (filteredResults) => {
+        const matchingData = dataTable.filter(item =>
+            filteredResults.some(title => item.title === title)
+        );
+        setFilter(matchingData)
+    };
     return (
-        <DataTable tableStyle={{ maxWidth: '50rem' }}>
-            <Column field="" header="Invoice number"></Column>
-            <Column field="" header="Dates due"></Column>
-            <Column field="" header="Company"></Column>
-            <Column field="" header="Created at"></Column>
-        </DataTable>
+
+        <>
+            <div className={"mx-auto flex justify-center w-4/5"}>
+                {isFilter && elementFilter && (
+                    <InputSearch placeholder={"test"} data={elementFilter} dataFiltered={handleDataFiltered}/>
+                )}
+                <DataTable className={"font-black font-roboto"}   value={filter} tableStyle={{ maxWidth: '100%' }} >
+                    {columns.map((col, index) => (
+                        <Column
+                                 key={index} field={col}
+                                 header={col.charAt(0).toUpperCase() + col.slice(1)}
+                                 className={index % 2 === 0 ? 'bg-white' : 'bg-gray'}
+                        />
+                    ))}
+                </DataTable>
+            </div>
+        </>
     )
 }
 
