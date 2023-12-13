@@ -15,9 +15,15 @@
 }
 
 .p-datatable-thead {
-    @apply bg-yellow
+    @apply bg-yellow px-3
 }
 
-tr {
-    @apply border-b
+.p-column-header-content {
+    @apply p-4
 }
+
+
+tr:nth-child(even){
+    @apply bg-gray-100
+}
+

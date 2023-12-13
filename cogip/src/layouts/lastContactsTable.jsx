@@ -33,7 +33,7 @@ const LastContacts = () => {
         </div>
        * */
 
-        <Table dataTable={data} elementFilter={title} isFilter={false}/>
+        <Table dataTable={data} elementFilter={title} isFilter={false} titleTable={"Last Contacts"}/>
     )
 }
 
