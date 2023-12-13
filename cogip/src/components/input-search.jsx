@@ -28,7 +28,7 @@ const InputSearch = ({ placeholder, data, dataFiltered }) => {
         <>
             <input
                 type={'text'}
-                className={'px-3 py-2 rounded border  bg-white'}
+                className={'px-3 py-2 rounded border  bg-white h-7 font-roboto'}
                 placeholder={placeholder}
                 value={inputValue}
                 onChange={handleFilter}

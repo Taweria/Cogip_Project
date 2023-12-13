@@ -18,6 +18,7 @@ import InfosContact from "./layouts/infosContact.jsx";
 const router = createBrowserRouter([
     {
         path: '/',
+        errorElement:<Page404/>,
         element: (
             <>
                 <Header />
@@ -32,6 +33,7 @@ const router = createBrowserRouter([
 
     {
          path: '/showcompany',
+        errorElement:<Page404/>,
         element: (
             <>
                 <Header />
@@ -45,6 +47,7 @@ const router = createBrowserRouter([
 
     {
          path: '/invoices',
+        errorElement:<Page404/>,
         element: (
             <>
                 <Header />
@@ -57,6 +60,7 @@ const router = createBrowserRouter([
 
     {
          path: '/contact',
+        errorElement:<Page404/>,
         element: (
             <>
                 <Header />
@@ -69,6 +73,7 @@ const router = createBrowserRouter([
 
     {
          path: '/companies',
+        errorElement:<Page404/>,
         element: (
             <>
                 <Header />

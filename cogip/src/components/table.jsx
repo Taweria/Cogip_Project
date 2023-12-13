@@ -3,6 +3,7 @@ import { Column } from 'primereact/column';
 import {useEffect, useState} from "react";
 import InputSearch from "./input-search.jsx";
 import DynamicTitle from "./dynamic-title.jsx";
+import {motion} from "framer-motion";
 
 /**
  * Table allows data to be displayed with an object. The object in question must not contain a
@@ -10,15 +11,15 @@ import DynamicTitle from "./dynamic-title.jsx";
  * @param(elementFilter) Is the element used to filter the elements of the array. This element must be one of the columns of the object
  * @param(isFilter) Boolean to display the filter
  * @param(titleTable) Title for the table
+ * @param(placeholderSearch) init placeholder into search
  * */
-const Table = ({dataTable, elementFilter, isFilter, titleTable}) => {
+const Table = ({dataTable, elementFilter, isFilter, titleTable, placeholderSearch}) => {
 
     const [filter, setFilter] = useState( [])
     useEffect(() => {
         setFilter(dataTable)
     }, [dataTable]);
     const columns = dataTable.length > 0 ? Object.keys(dataTable[0]) : [];
-    console.log(dataTable)
 
     const handleDataFiltered = (filteredResults) => {
         const matchingData = dataTable.filter(item =>
@@ -29,11 +30,20 @@ const Table = ({dataTable, elementFilter, isFilter, titleTable}) => {
     return (
 
         <>
-            <div className={"mx-auto flex flex-col w-5/6"}>
-                <div className={"flex justify-between pb-8 relative"}>
-                    <DynamicTitle title={titleTable} />
+            <motion.div
+                className={"mx-auto flex flex-col w-5/6"}
+                initial={{y: -200, opacity:-1}}
+                animate={{y: 0, opacity:1}}
+                transition={{
+                    duration: 1,
+                    type: 'tween',
+                    ease: 'easeOut'
+                }}
+                >
+                <div className={"flex justify-between pb-8 items-center"}>
+                    <DynamicTitle title={titleTable} isUnderline/>
                     {isFilter && elementFilter && (
-                        <InputSearch placeholder={"test"} data={elementFilter} dataFiltered={handleDataFiltered}/>
+                        <InputSearch placeholder={placeholderSearch} data={elementFilter} dataFiltered={handleDataFiltered}/>
                     )}
 
                 </div>
@@ -46,7 +56,7 @@ const Table = ({dataTable, elementFilter, isFilter, titleTable}) => {
                         />
                     ))}
                 </DataTable>
-            </div>
+            </motion.div>
         </>
     )
 }
