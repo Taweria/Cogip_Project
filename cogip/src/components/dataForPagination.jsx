@@ -6,8 +6,6 @@ const DataForPagination = ({data, loading, value }) => {
         return <h2>Loading...</h2>
     }
 
-    console.log(value)
-
     return (
         <>
                 {data.map((item) => (
