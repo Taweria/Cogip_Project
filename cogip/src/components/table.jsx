@@ -2,6 +2,7 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import {useEffect, useState} from "react";
 import InputSearch from "./input-search.jsx";
+import DynamicTitle from "./dynamic-title.jsx";
 
 /**
  * Table allows data to be displayed with an object. The object in question must not contain a
@@ -29,8 +30,8 @@ const Table = ({dataTable, elementFilter, isFilter, titleTable}) => {
 
         <>
             <div className={"mx-auto flex flex-col w-5/6"}>
-                <div className={"flex justify-between pb-8"}>
-                    <h2 className={"font-black text-6xl font-inter"}>{titleTable}</h2>
+                <div className={"flex justify-between pb-8 relative"}>
+                    <DynamicTitle title={titleTable} />
                     {isFilter && elementFilter && (
                         <InputSearch placeholder={"test"} data={elementFilter} dataFiltered={handleDataFiltered}/>
                     )}
