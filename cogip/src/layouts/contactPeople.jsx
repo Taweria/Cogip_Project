@@ -8,7 +8,7 @@ const ContactPeople = () => {
             <div className="flex flex-col gap-4 md:flex-row">
                 <People />
             </div>
-             <img src={manager} alt="manager" className="absolute right-0 top:1/2 md:top-1/3" />
+             <img src={manager} alt="manager" className="absolute right-0 top-1/2 md:top-1/3" />
          </div>
     )
 }
