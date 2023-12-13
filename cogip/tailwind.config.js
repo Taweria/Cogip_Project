@@ -16,6 +16,7 @@ export default {
             colors: {
                 'yellow': '#F9DE4E'
             },
+
         },
     },
     plugins: [],
