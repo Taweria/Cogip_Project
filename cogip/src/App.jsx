@@ -81,11 +81,11 @@ const router = createBrowserRouter([
     },
 
     {
-         path: '/showcontact',
+         path: '/showcontact/:id',
         element: (
             <>
                 <Header />
-                <InfosContact contact="Jane Smith" phone="0476 76 76 76" mail="smith@gmail.com" company="Pied Pipper"/>
+                <InfosContact/>
                 <Footer />
             </>
         ),
