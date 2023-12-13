@@ -7,7 +7,6 @@ import {motion} from "framer-motion";
 const Header = () => {
     const home = useIsHome();
 
-
     return (
         <>
             <header className={"bg-yellow"}>

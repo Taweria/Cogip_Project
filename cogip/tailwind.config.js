@@ -16,7 +16,9 @@ export default {
             colors: {
                 'yellow': '#F9DE4E'
             },
-
+            backgroundImage: {
+                'rect-17': "url('/src/assets/rect-17.svg')",
+            }
         },
     },
     plugins: [],

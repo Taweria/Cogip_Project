@@ -27,11 +27,13 @@ const Table = ({dataTable, elementFilter, isFilter, titleTable, placeholderSearc
         );
         setFilter(matchingData)
     };
+
+
     return (
 
         <>
             <motion.div
-                className={"mx-auto flex flex-col w-5/6"}
+                className={"mx-auto flex flex-col w-5/6 my-8"}
                 initial={{y: -200, opacity:-1}}
                 animate={{y: 0, opacity:1}}
                 transition={{
@@ -41,7 +43,7 @@ const Table = ({dataTable, elementFilter, isFilter, titleTable, placeholderSearc
                 }}
                 >
                 <div className={"flex justify-between pb-8 items-center"}>
-                    <DynamicTitle title={titleTable} isUnderline/>
+                    <DynamicTitle title={titleTable} />
                     {isFilter && elementFilter && (
                         <InputSearch placeholder={placeholderSearch} data={elementFilter} dataFiltered={handleDataFiltered}/>
                     )}

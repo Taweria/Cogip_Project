@@ -1,11 +1,12 @@
 import manager from '../assets/manager.svg';
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, Suspense} from 'react';
 import getData from "../api/getData.js";
-import Table from "../components/table-without-pagination.jsx";
+import Table from "../components/table.jsx";
+import Loader from "./loader.jsx";
+import {Await} from "react-router-dom";
 
 const LastInvoices = () => {
     const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         getData()
@@ -13,17 +14,16 @@ const LastInvoices = () => {
             .catch(error => console.error('Error fetching data:', error.message));
     }, []);
 
-    // Table keys
-    const tableKey = ["userId", "id", "title", "body"];
-    // Table heads
-    const tableHead = ["Name", "Phone", "Mail", "Company", "Created at"];
-
     return (
        <div className="w-full mt-48">
-             <h2 className="text-6xl font-black  mx-24 font-inter">Last invoices</h2>
-             <div className="flex justify-center">
-                <Table data={data} loading={loading} tableKey={tableKey} tableHead={tableHead}/>
-            </div>
+           <Suspense fallback={<Loader/>}>
+               <Await resolve={data}>
+                   <Table
+                       dataTable={data}
+                       titleTable={"Last companies"}
+                       placeholderSearch={"Ceci est un placeholder" }/>
+               </Await>
+           </Suspense>
            <div className="relative">
                 <img src={manager} alt="manager" className={"absolute right-0 mt-16 " + (window.location.pathname == "/" ? "" : "opacity-0") } />
             </div>

@@ -1,12 +1,12 @@
-const DynamicTitle = ({title, isUnderline}) => {
+const DynamicTitle = ({title}) => {
 
-
+    const path = window.location.pathname
 
     return (
-        <div className="ml-12 mt-12 md:ml-24">
+        <div className="my-12 ">
             <div className="relative md:pr-28">
                   <h2 className="text-5xl md:text-6xl font-black font-inter md:w-full relative z-10">{title}</h2>
-                {isUnderline && (
+                {path !== "/" && (
                     <div className="bg-yellow w-3/4 h-8 absolute left-24 top-9 "></div>
                 )}
 
