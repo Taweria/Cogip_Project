@@ -14,6 +14,9 @@ import AllContactsTable from "./layouts/allContactsTable.jsx";
 import AllCompaniesTable from "./layouts/allCompaniesTable.jsx";
 import InfosContact from "./layouts/infosContact.jsx";
 import LoginModal from "./components/login_modal.jsx";
+import {getInvoices} from "./api/getInvoices.js";
+import {data} from "autoprefixer";
+import login_modal from "./components/login_modal.jsx";
 
 
 const router = createBrowserRouter([
@@ -50,6 +53,13 @@ const router = createBrowserRouter([
     {
          path: '/invoices',
         errorElement:<Page404/>,
+        loader:() => {
+            const invoices = getInvoices().then(res =>  res.data);
+            console.log(invoices)
+            return ({
+                invoices
+            })
+        },
         element: (
             <>
                 <Header />

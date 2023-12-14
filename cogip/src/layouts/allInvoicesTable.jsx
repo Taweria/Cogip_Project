@@ -1,21 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, Suspense} from 'react';
 import getData from "../api/getData.js";
 import Table from "../components/table.jsx";
 import Pagination from "../components/pagination.jsx";
+import {Await, useLoaderData} from "react-router-dom";
+import Loader from "./loader.jsx";
 
 const AllInvoiceTable = () => {
-    const [data, setData] = useState([]);
-
-    useEffect(() => {
-        getData()
-            .then(data => setData(data))
-            .catch(error => console.error('Error fetching data:', error.message));
-    }, []);
-
+    const {data} = useLoaderData()
     const company = data.map(data => data.title)
     return (
         <div>
-            <Table dataTable={data} isFilter titleTable={"All invoices"} elementFilter={company} placeholderSearch={"Search company"} paginator/>
+            <Suspense fallback={<Loader/>}>
+                <Await resolve={data}>
+                    {(data) => (
+                        <Table dataTable={data} isFilter titleTable={"All invoices"} elementFilter={company} placeholderSearch={"Search company"} paginator/>
+                    )}
+                </Await>
+            </Suspense>
+
+
         </div>
     )
 }
