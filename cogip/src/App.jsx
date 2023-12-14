@@ -68,7 +68,6 @@ const router = createBrowserRouter([
         element: (
             <>
                 <Header />
-                <DynamicTitle title="All contacts"/>
                 <AllContactsTable />
                 <Footer />
             </>
@@ -81,8 +80,6 @@ const router = createBrowserRouter([
         element: (
             <>
                 <Header />
-                <DynamicTitle title="All companies"/>
-                <InfosCompany name="Pied Pipper" tva="BE87 876 767 565" country="Belgium" type="Supplier"/>
                 <AllCompaniesTable />
                 <Footer />
             </>

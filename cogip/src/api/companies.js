@@ -11,3 +11,15 @@ export function getCompany(id){
         throw error;
       });
 }
+
+export function getCompanies(){
+    return Axios.get("https://cogip-990e44950882.herokuapp.com/companies/")
+      .then(response => {
+        const companies = response.data;
+        return companies;
+      })
+      .catch(error => {
+        console.error("Error fetching companies:", error);
+        throw error;
+      });
+}
