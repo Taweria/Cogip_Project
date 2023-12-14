@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import getData from "../api/getData.js";
-import PaginationTable from "../components/pagination-table.jsx";
+import Table from "../components/table.jsx";
+import Pagination from "../components/pagination.jsx";
 
 const AllInvoiceTable = () => {
     const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         getData()
@@ -12,14 +12,10 @@ const AllInvoiceTable = () => {
             .catch(error => console.error('Error fetching data:', error.message));
     }, []);
 
-    // Table keys
-    const tableKey = ["userId", "id", "title", "body"];
-    // Table heads
-    const tableHead = ["Invoice number", "Dates due", "Company", "Created at"];
-
+    const company = data.map(data => data.title)
     return (
         <div>
-            <PaginationTable data={data} loading={loading} tableKey={tableKey} tableHead={tableHead}/>
+            <Table dataTable={data} isFilter titleTable={"All invoices"} elementFilter={company} placeholderSearch={"Search company"} paginator/>
         </div>
     )
 }

@@ -13,8 +13,8 @@ import {motion} from "framer-motion";
  * @param(titleTable) Title for the table
  * @param(placeholderSearch) init placeholder into search
  * */
-const Table = ({dataTable, elementFilter, isFilter, titleTable, placeholderSearch}) => {
-
+const Table = ({dataTable, elementFilter, isFilter, titleTable, placeholderSearch, paginator}) => {
+    const [first, setFirst] = useState(0);
     const [filter, setFilter] = useState( [])
     useEffect(() => {
         setFilter(dataTable)
@@ -25,7 +25,8 @@ const Table = ({dataTable, elementFilter, isFilter, titleTable, placeholderSearc
         const matchingData = dataTable.filter(item =>
             filteredResults.some(title => item.title === title)
         );
-        setFilter(matchingData)
+        setFilter(matchingData);
+        setFirst(0)
     };
 
 
@@ -49,12 +50,30 @@ const Table = ({dataTable, elementFilter, isFilter, titleTable, placeholderSearc
                     )}
 
                 </div>
-                <DataTable className={"font-black font-roboto"}   value={filter} tableStyle={{ maxWidth: '100%' }} >
+                <DataTable
+                    className={"font-black font-roboto"}
+                    value={filter}
+                    tableStyle={{ maxWidth: '100%' }}
+                    {...(paginator
+                        ? {
+                            paginator: true,
+                            rows: 10, // Adjust the number of rows per page
+                            totalRecords: filter.length,
+                            filter:true,
+                            removableSort:true,
+                        }
+                        : {})}
+                >
                     {columns.map((col, index) => (
                         <Column
                                  key={index} field={col}
                                  header={col.charAt(0).toUpperCase() + col.slice(1)}
                                  className={index % 2 === 0 ? 'even-row' : 'odd-row'}
+                                 {...(paginator
+                                     ? {
+                                        sortable:true,
+                                     }
+                                     : {})}
                         />
                     ))}
                 </DataTable>

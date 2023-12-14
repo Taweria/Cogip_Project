@@ -51,7 +51,6 @@ const router = createBrowserRouter([
         element: (
             <>
                 <Header />
-                <DynamicTitle title="All invoices"/>
                 <AllInvoiceTable />
                 <Footer />
             </>

@@ -23,7 +23,12 @@
 .p-column-header-content {
     @apply p-4
 }
-
+.p-paginator-bottom{
+    @apply mt-8
+}
+.p-paginator-pages, .p-paginator-element{
+    @apply mx-2 p-1
+}
 
 tr:nth-child(even){
     @apply bg-gray-100
