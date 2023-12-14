@@ -19,10 +19,10 @@ const LoginModal = ({ isOpen, onClose }) => {
     }, [isOpen]);
 
     return (
-        <div className={`modal ${isOpen ? 'block' : 'hidden'}`}>
-            <div className="fixed inset-0 bg-gray-500 bg-opacity-75 blur" onClick={onClose}></div>
-            <div className="fixed bg-white rounded-lg mx-auto my-16 w-1/2 inset-0 flex justify-center items-center">
-                <form>
+        <div className={`modal ${isOpen ? 'block z-50 absolute' : 'hidden'}`}>
+            <div className="fixed inset-0 bg-gray-500  bg-opacity-75 blur" onClick={onClose}></div>
+            <div className="fixed bg-white rounded-lg mx-auto my-16 w-1/3 h-1/3  inset-0 flex justify-center items-center">
+                <form className={""}>
                     <h2 className="text-2xl font-bold mb-4">Login</h2>
                     <div className="mb-4">
                         <label htmlFor="username" className="block mb-2">Username</label>
