@@ -11,3 +11,15 @@ export function getContact(id){
         throw error;
       });
 }
+
+export function getContacts(){
+    return Axios.get("https://cogip-990e44950882.herokuapp.com/contacts/")
+      .then(response => {
+        const contacts = response.data;
+        return contacts;
+      })
+      .catch(error => {
+        console.error("Error fetching contacts:", error);
+        throw error;
+      });
+}
