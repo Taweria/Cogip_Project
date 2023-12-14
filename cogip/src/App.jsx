@@ -31,11 +31,11 @@ const router = createBrowserRouter([
     },
 
     {
-         path: '/showcompany',
+         path: '/showcompany/:id',
         element: (
             <>
                 <Header />
-                <InfosCompany name="Pied Pipper" tva="BE87 876 767 565" country="Belgium" type="Supplier"/>
+                <InfosCompany/>
                 <ContactPeople />
                 <LastInvoices />
                 <Footer />

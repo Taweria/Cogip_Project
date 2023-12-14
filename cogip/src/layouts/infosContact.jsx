@@ -27,7 +27,7 @@ const InfosContact = () => {
                     <p className="font-roboto font-medium"> <span className="font-bold">Contact: </span> {contact.name} </p>
                     <p className="font-roboto font-medium"> <span className="font-bold">Phone: </span> {contact.phone} </p>
                     <p className="font-roboto font-medium"> <span className="font-bold">Mail: </span> {contact.email} </p>
-                    <p className="font-roboto font-medium"> <span className="font-bold">Company: </span> {contact.company_name} </p>
+                    <p className="font-roboto font-medium capitalize"> <span className="font-bold">Company: </span> {contact.company_name} </p>
                 </div>
             </div>
          </div>
