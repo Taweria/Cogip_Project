@@ -13,6 +13,7 @@ import AllInvoiceTable from "./layouts/allInvoicesTable.jsx";
 import AllContactsTable from "./layouts/allContactsTable.jsx";
 import AllCompaniesTable from "./layouts/allCompaniesTable.jsx";
 import InfosContact from "./layouts/infosContact.jsx";
+import LoginModal from "./components/login_modal.jsx";
 
 
 const router = createBrowserRouter([
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
         element: (
             <>
                 <Header />
+                <LoginModal />
                 <LastInvoices />
                 <LastContacts />
                 <LastCompanies />
@@ -32,12 +34,12 @@ const router = createBrowserRouter([
     },
 
     {
-         path: '/showcompany',
         errorElement:<Page404/>,
+         path: '/showcompany/:id',
         element: (
             <>
                 <Header />
-                <InfosCompany name="Pied Pipper" tva="BE87 876 767 565" country="Belgium" type="Supplier"/>
+                <InfosCompany/>
                 <ContactPeople />
                 <LastInvoices />
                 <Footer />
@@ -85,11 +87,11 @@ const router = createBrowserRouter([
     },
 
     {
-         path: '/showcontact',
+         path: '/showcontact/:id',
         element: (
             <>
                 <Header />
-                <InfosContact contact="Jane Smith" phone="0476 76 76 76" mail="smith@gmail.com" company="Pied Pipper"/>
+                <InfosContact/>
                 <Footer />
             </>
         ),
