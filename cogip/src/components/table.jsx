@@ -12,75 +12,76 @@ import {motion} from "framer-motion";
  * @param(isFilter) Boolean to display the filter
  * @param(titleTable) Title for the table
  * @param(placeholderSearch) init placeholder into search
+ * @param(valueSearch) init value as search
  * */
-const Table = ({dataTable, elementFilter, isFilter, titleTable, placeholderSearch, paginator}) => {
+const Table = ({dataTable, elementFilter, isFilter, titleTable, placeholderSearch, paginator, valueSearch}) => {
     const [first, setFirst] = useState(0);
-    const [filter, setFilter] = useState( [])
-    console.log(dataTable)
+    const [filter, setFilter] = useState([]);
     useEffect(() => {
-        setFilter(dataTable)
+        setFilter(dataTable);
     }, [dataTable]);
     const columns = dataTable.length > 0 ? Object.keys(dataTable[0]) : [];
 
-    const handleDataFiltered = (filteredResults) => {
+    const handleDataFiltered = (property, filteredResults) => {
         const matchingData = dataTable.filter(item =>
-            filteredResults.some(title => item.title === title)
+            filteredResults.some(filterValue => item[property] === filterValue)
         );
         setFilter(matchingData);
-        setFirst(0)
+        setFirst(0);
     };
 
-
     return (
-
         <>
             <motion.div
                 className={"mx-auto flex flex-col w-5/6 my-8"}
-                initial={{y: -200, opacity:-1}}
-                animate={{y: 0, opacity:1}}
+                initial={{y: -200, opacity: -1}}
+                animate={{y: 0, opacity: 1}}
                 transition={{
                     duration: 1,
                     type: 'tween',
                     ease: 'easeOut'
                 }}
-                >
+            >
                 <div className={"flex justify-between pb-8 items-center"}>
                     <DynamicTitle title={titleTable} />
                     {isFilter && elementFilter && (
-                        <InputSearch placeholder={placeholderSearch} data={elementFilter} dataFiltered={handleDataFiltered}/>
+                        <InputSearch
+                            placeholder={placeholderSearch}
+                            data={elementFilter}
+                            dataFiltered={(filteredResults) => handleDataFiltered(valueSearch, filteredResults)}
+                        />
                     )}
-
                 </div>
                 <DataTable
                     className={"font-black font-roboto"}
                     value={filter}
-                    tableStyle={{ maxWidth: '100%' }}
+                    tableStyle={{maxWidth: '100%'}}
                     {...(paginator
                         ? {
                             paginator: true,
-                            rows: 10, // Adjust the number of rows per page
+                            rows: 10, // Ajustez le nombre de lignes par page
                             totalRecords: filter.length,
-                            filter:true,
-                            removableSort:true,
+                            filter: "true",
+                            removableSort: true,
                         }
                         : {})}
                 >
                     {columns.map((col, index) => (
                         <Column
-                                 key={index} field={col}
-                                 header={col.charAt(0).toUpperCase() + col.slice(1)}
-                                 className={index % 2 === 0 ? 'even-row' : 'odd-row'}
-                                 {...(paginator
-                                     ? {
-                                        sortable:true,
-                                     }
-                                     : {})}
+                            key={index} field={col}
+                            header={col.charAt(0).toUpperCase() + col.slice(1)}
+                            className={index % 2 === 0 ? 'even-row' : 'odd-row'}
+                            {...(paginator
+                                ? {
+                                    sortable: true,
+                                }
+                                : {})}
                         />
                     ))}
                 </DataTable>
             </motion.div>
         </>
-    )
-}
+    );
+};
 
 export default Table;

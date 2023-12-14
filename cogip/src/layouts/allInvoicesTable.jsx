@@ -33,7 +33,8 @@ const AllInvoiceTable = () => {
             });
     }, []);
 
-    const company = invoicesData.map(data => data.name);
+    const company = invoicesData.map(data => data.Company);
+    console.log(company)
 
     return (
         <div>
@@ -47,6 +48,7 @@ const AllInvoiceTable = () => {
                     elementFilter={company}
                     placeholderSearch={"Search company"}
                     paginator
+                    valueSearch={"Company"}
                 />
             )}
         </div>
