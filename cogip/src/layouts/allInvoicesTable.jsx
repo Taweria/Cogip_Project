@@ -34,8 +34,6 @@ const AllInvoiceTable = () => {
     }, []);
 
     const company = invoicesData.map(data => data.Company);
-    console.log(company)
-
     return (
         <div>
             {loading ? (

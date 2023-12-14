@@ -26,7 +26,6 @@ const router = createBrowserRouter([
         element: (
             <>
                 <Header />
-                <LoginModal />
                 <LastInvoices />
                 <LastContacts />
                 <LastCompanies />
@@ -35,7 +34,6 @@ const router = createBrowserRouter([
             </>
         ),
     },
-
     {
         errorElement:<Page404/>,
          path: '/showcompany/:id',
@@ -49,7 +47,6 @@ const router = createBrowserRouter([
             </>
         ),
     },
-
     {
          path: '/invoices',
         errorElement:<Page404/>,
@@ -99,7 +96,6 @@ const router = createBrowserRouter([
             </>
         ),
     },
-
     {
          path: '*',
         element: (

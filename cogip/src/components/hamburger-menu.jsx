@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { Fade as Hamburger } from 'hamburger-react';
 import {useEffect, useState} from "react";
+import LoginModal from "./login_modal.jsx";
+
 
 
 const HamburgerMenu = () => {
@@ -25,11 +27,19 @@ const HamburgerMenu = () => {
 
     const [isOpen, setOpen] = useState(false);
     const [path, setPath] = useState('');
-    useEffect(() => {setPath(window.location.href)})
     const localHost = "http://localhost:5173";
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    useEffect(() => {setPath(window.location.href)})
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
+
     return (
         <div
-
             className="md:flex md:justify-between md:w-full font-medium">
             <div className="md:hidden">
                 <Hamburger toggled={isOpen} toggle={setOpen} />
@@ -43,8 +53,9 @@ const HamburgerMenu = () => {
             </ul>
             <ul className={`md:flex md:space-x-4  ${isOpen ? 'block  mb-3' : 'hidden'}`}>
                 <li className={"btn-link-default bg-white rounded-xl "}><Link to={"/signUp"}>Sign up</Link></li>
-                <li className={"btn-link-default"}><Link to={"/login"}>Login</Link></li>
+                <li className={"btn-link-default"}><button onClick={openModal}> login</button></li>
             </ul>
+            {isModalOpen && <LoginModal isOpen={isModalOpen} onClose={closeModal}/>}
         </div>
     );
 }

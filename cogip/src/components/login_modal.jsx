@@ -1,24 +1,22 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 
-const LoginModal = () => {
-    const [isOpen, setIsOpen] = useState(false);
+const LoginModal = ({ isOpen, onClose }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
-    const onClose = () => {
-        setIsOpen(false);
-    }
-
     const handleLogin = () => {
         if (username === 'demo' && password === 'password') {
             setError('');
-            onClose();
+            onClose(); // Fermer le modal après un login réussi
         } else {
             setError('Invalid username or password. Please try again.');
         }
     };
 
+    useEffect(() => {
+        // Vous pouvez ajouter du code ici pour effectuer des actions lors de l'ouverture du modal
+    }, [isOpen]);
 
     return (
         <div className={`modal ${isOpen ? 'block' : 'hidden'}`}>
@@ -47,3 +45,4 @@ const LoginModal = () => {
 };
 
 export default LoginModal;
+
