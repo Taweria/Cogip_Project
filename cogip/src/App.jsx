@@ -13,6 +13,7 @@ import AllInvoiceTable from "./layouts/allInvoicesTable.jsx";
 import AllContactsTable from "./layouts/allContactsTable.jsx";
 import AllCompaniesTable from "./layouts/allCompaniesTable.jsx";
 import InfosContact from "./layouts/infosContact.jsx";
+import LoginModal from "./components/login_modal.jsx";
 
 
 const router = createBrowserRouter([
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
         element: (
             <>
                 <Header />
+                <LoginModal />
                 <LastInvoices />
                 <LastContacts />
                 <LastCompanies />
