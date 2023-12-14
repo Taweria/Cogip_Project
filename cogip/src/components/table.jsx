@@ -16,6 +16,7 @@ import {motion} from "framer-motion";
 const Table = ({dataTable, elementFilter, isFilter, titleTable, placeholderSearch, paginator}) => {
     const [first, setFirst] = useState(0);
     const [filter, setFilter] = useState( [])
+    console.log(dataTable)
     useEffect(() => {
         setFilter(dataTable)
     }, [dataTable]);

@@ -53,13 +53,6 @@ const router = createBrowserRouter([
     {
          path: '/invoices',
         errorElement:<Page404/>,
-        loader:() => {
-            const invoices = getInvoices().then(res =>  res.data);
-            console.log(invoices)
-            return ({
-                invoices
-            })
-        },
         element: (
             <>
                 <Header />
