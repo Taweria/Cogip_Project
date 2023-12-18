@@ -2,7 +2,7 @@ import React from 'react';
 import Loader from "../layouts/loader.jsx";
 
 const DataForPagination = ({data, loading, value }) => {
-    // TO CHANGE LATER FOR A SPINNER
+    
     if(loading) {
         return <Loader/>
     }
