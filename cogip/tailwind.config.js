@@ -15,7 +15,10 @@ export default {
         extend: {
             colors: {
                 'yellow': '#F9DE4E',
-                'lavande': '#9698D6'
+                'lavande': '#9698D6',
+                'bg-dashboard': '#f5f5fb',
+                'violet': '#4d4cac',
+                'pink': '#ff808b'
             },
             backgroundImage: {
                 'rect-17': "url('/src/assets/rect-17.svg')",
