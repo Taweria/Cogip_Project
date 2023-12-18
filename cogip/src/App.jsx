@@ -59,7 +59,6 @@ const router = createBrowserRouter([
             </>
         ),
     },
-
     {
          path: '/contact',
         errorElement:<Page404/>,
