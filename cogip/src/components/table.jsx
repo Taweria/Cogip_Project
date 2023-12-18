@@ -1,5 +1,5 @@
-import { DataTable } from 'primereact/datatable';
-import { Column } from 'primereact/column';
+import {DataTable} from 'primereact/datatable';
+import {Column} from 'primereact/column';
 import {useEffect, useState} from "react";
 import InputSearch from "./input-search.jsx";
 import DynamicTitle from "./dynamic-title.jsx";
@@ -13,10 +13,19 @@ import {motion} from "framer-motion";
  * @param(titleTable) Title for the table
  * @param(placeholderSearch) init placeholder into search
  * @param(valueSearch) init value as search
+ * @param(detailsRow) The event handler function to be invoked when a row is clicked.
+ *     This function should accept the selected row data as an argument.
+ *     For example, if using handleRowClick, it represents the click event handler function.
+ *     Replace this with the actual parameter name used in your function.
+ *     If not exist selectRow not exist
  * */
-const Table = ({dataTable, elementFilter, isFilter, titleTable, placeholderSearch, paginator, valueSearch}) => {
+const Table = ({dataTable, elementFilter, isFilter, titleTable, placeholderSearch, paginator, valueSearch, detailsRow}) => {
     const [first, setFirst] = useState(0);
     const [filter, setFilter] = useState([]);
+    const [selectedProduct, setSelectedProduct] = useState(null);
+
+
+
     useEffect(() => {
         setFilter(dataTable);
     }, [dataTable]);
@@ -43,7 +52,7 @@ const Table = ({dataTable, elementFilter, isFilter, titleTable, placeholderSearc
                 }}
             >
                 <div className={"flex justify-between pb-8 items-center"}>
-                    <DynamicTitle title={titleTable} />
+                    <DynamicTitle title={titleTable}/>
                     {isFilter && elementFilter && (
                         <InputSearch
                             placeholder={placeholderSearch}
@@ -55,29 +64,38 @@ const Table = ({dataTable, elementFilter, isFilter, titleTable, placeholderSearc
                 <DataTable
                     className={"font-black font-roboto"}
                     value={filter}
-                    tableStyle={{maxWidth: '100%'}}
+                    {...(detailsRow ? {
+                        selectionMode: "single",
+                        selection: selectedProduct
+                    }: {})}
+                    tableStyle={{ maxWidth: '100%' }}
+                    dataKey={"id"}
+                    onSelectionChange={(e) => detailsRow(e.value)}
                     {...(paginator
                         ? {
                             paginator: true,
-                            rows: 10, // Ajustez le nombre de lignes par page
+                            rows: 10,
                             totalRecords: filter.length,
-                            filter: "true",
+                            filter: 'true',
                             removableSort: true,
                         }
                         : {})}
                 >
-                    {columns.map((col, index) => (
-                        <Column
-                            key={index} field={col}
-                            header={col.charAt(0).toUpperCase() + col.slice(1)}
-                            className={index % 2 === 0 ? 'even-row' : 'odd-row'}
-                            {...(paginator
-                                ? {
-                                    sortable: true,
-                                }
-                                : {})}
-                        />
-                    ))}
+                    {columns
+                        .filter((col) => col !== 'id')
+                        .map((col, index) => (
+                            <Column
+                                key={index}
+                                field={col}
+                                header={col.charAt(0).toUpperCase() + col.slice(1)}
+                                className={index % 2 === 0 ? 'even-row' : 'odd-row'}
+                                {...(paginator
+                                    ? {
+                                        sortable: true,
+                                    }
+                                    : {})}
+                            />
+                        ))}
                 </DataTable>
             </motion.div>
         </>

@@ -11,6 +11,7 @@ const AllContactsTable = () => {
         getCompanies()
             .then(res => {
                 const formattedCompanies = res.data.map(data => ({
+                    id:data.id,
                     Name: data.name,
                     TVA: data.tva,
                     Country: data.country,
