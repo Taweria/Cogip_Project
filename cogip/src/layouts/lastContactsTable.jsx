@@ -1,5 +1,5 @@
 import {useState, useEffect, Suspense} from 'react';
-import getData from "../api/getData.js";
+import {getContacts} from "../api/contacts.js";
 import Table from "../components/table.jsx";
 import {Await} from "react-router-dom";
 import Loader from "./loader.jsx";
@@ -8,11 +8,29 @@ import light from  "../assets/light.svg"
 
 const LastContacts = () => {
     const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        getData()
-            .then(data => setData(data.slice(0, 5)))
-            .catch(error => console.error('Error fetching data:', error.message));
+        getContacts()
+            .then(res => {
+                const formattedContacts = res.data.slice(0, 5).map(data => ({
+                    Name: data.name,
+                    Phone: data.phone,
+                    Mail: data.email,
+                    Company: data.company_name,
+                    Created_At: new Date(data.created_at).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit'
+                    })
+                }));
+                setData(formattedContacts);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.error(error.message);
+                setLoading(false);
+            });
     }, []);
 
     const tempTable = [];

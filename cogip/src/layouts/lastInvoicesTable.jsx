@@ -1,17 +1,38 @@
 import manager from '../assets/manager.svg';
 import React, {useState, useEffect, Suspense} from 'react';
-import getData from "../api/getData.js";
 import Table from "../components/table.jsx";
 import Loader from "./loader.jsx";
 import {Await} from "react-router-dom";
+import {getInvoices} from "../api/getInvoices.js";
 
 const LastInvoices = () => {
     const [data, setData] = useState([]);
+     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        getData()
-            .then(data => setData(data.slice(0, 5)))
-            .catch(error => console.error('Error fetching data:', error.message));
+        getInvoices()
+            .then(res => {
+                const formattedCompanies = res.data.slice(0,5).map(data => ({
+                    Invoices_number: data.ref,
+                    Due_Date: new Date(data.due_at).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit'
+                    }),
+                    Company: data.name,
+                    Created_At: new Date(data.updated_at).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit'
+                    })
+                }));
+                setData(formattedCompanies);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.error(error.message);
+                setLoading(false);
+            });
     }, []);
 
     return (
@@ -20,7 +41,7 @@ const LastInvoices = () => {
                <Await resolve={data}>
                    <Table
                        dataTable={data}
-                       titleTable={"Last companies"}
+                       titleTable={"Last invoices"}
                        placeholderSearch={"Ceci est un placeholder" }/>
                </Await>
            </Suspense>
