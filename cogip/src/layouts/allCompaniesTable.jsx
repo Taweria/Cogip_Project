@@ -32,7 +32,10 @@ const AllContactsTable = () => {
     }, []);
 
     const companies = data.map(data => data.Name);
-
+    const handleShowDetail = (rowData) => {
+        const id = rowData.id
+        window.location.pathname= `/showcompany/${id}`
+    }
     return (
         <div>
             {loading ? (
@@ -46,6 +49,7 @@ const AllContactsTable = () => {
                     placeholderSearch={"Search companies"}
                     paginator
                     valueSearch={"Name"}
+                    detailsRow={handleShowDetail}
                 />
             )}
         </div>
