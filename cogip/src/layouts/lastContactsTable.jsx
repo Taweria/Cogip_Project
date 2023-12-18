@@ -1,4 +1,4 @@
-import {useState, useEffect, Suspense} from 'react';
+import React, {useState, useEffect, Suspense} from 'react';
 import {getContacts} from "../api/contacts.js";
 import Table from "../components/table.jsx";
 import {Await} from "react-router-dom";
@@ -33,34 +33,26 @@ const LastContacts = () => {
             });
     }, []);
 
-    const tempTable = [];
-    const tableObject = () => {
-        data.map(data => {
-            const objectData = {
-                title:'',
-                body:''
-            }
-            objectData.title = data.title
-            objectData.body = data.body
-
-            tempTable.push(objectData);
-        })
-        return tempTable
-    }
-
     return (
-        <Suspense fallback={<Loader/>}>
-            <Await resolve={data}>
-                <Table
-                    dataTable={data}
-                    titleTable={"Last Contacts"}
-                    placeholderSearch={"Ceci est un placeholder" }/>
+        <section>
+            {loading ? (
+                <Loader />
+            ) : (
+                <>
+                    <Table
+                        dataTable={data}
+                        titleTable={"Last Contacts"}
+                        placeholderSearch={"Ceci est un placeholder" }/>
 
-                <div className="relative">
-                    <img src={light} alt="ligh-bulb" className="absolute left-0 mt-16"/>
-                </div>
-            </Await>
-        </Suspense>
+                    <div className="relative">
+                        <img src={light} alt="ligh-bulb" className="absolute left-0 mt-16"/>
+                    </div>
+                </>
+
+            )}
+        </section>
+
+
     )
 }
 

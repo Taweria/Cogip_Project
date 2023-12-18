@@ -32,14 +32,17 @@ const LastCompanies = () => {
     }, []);
 
     return (
-        <Suspense fallback={<Loader/>}>
-            <Await resolve={data}>
+        <>
+            {loading ? (
+                <Loader />
+            ) : (
                 <Table
                     dataTable={data}
                     titleTable={"Last companies"}
                     placeholderSearch={"Ceci est un placeholder" }/>
-            </Await>
-        </Suspense>
+
+            )}
+        </>
     )
 }
 

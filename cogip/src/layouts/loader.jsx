@@ -5,7 +5,7 @@ const Loader = () => {
 
     return (
         <>
-            <div className={"w-full h-screen flex justify-center items-center"}>
+            <div className={"w-full  flex justify-center items-center"}>
                 <Oval   height={80}
                         width={80} color={'#F9DE4E'}
                         wrapperStyle={{}}
