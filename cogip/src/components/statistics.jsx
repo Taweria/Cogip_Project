@@ -31,7 +31,7 @@ const Statistics = () => {
 
 
     return (
-        <div className="w-12/12 md:w-6/12 mx-8 py-8 rounded-md font-inter">
+        <div className="w-12/12 md:w-6/12 mx-8 py-8 rounded-md font-inter shadow-md shadow-gray-200">
             <h2 className="font-bold text-lg mx-8"> Statistics </h2>
             <div className="flex flex-col justify-center items-center md:flex-row">
                <div className="bg-violet text-white font-bold rounded-full flex flex-col justify-center items-center w-32 h-32 p-8 m-2 md:m-10">
