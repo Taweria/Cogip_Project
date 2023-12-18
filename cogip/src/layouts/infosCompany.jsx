@@ -13,8 +13,6 @@ const InfosCompany = () => {
     .catch((error) => console.error('Error fetching company:', error.message));
     }, []);
 
-    console.log(company)
-
     return (
          <div>
             <div>

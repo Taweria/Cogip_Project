@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {getContacts} from '../api/contacts.js';
 import { Link } from 'react-router-dom';
 import { useParams } from "react-router-dom";
+import Loader from "../layouts/loader.jsx";
 
 const People = () => {
     const id = useParams();
@@ -36,7 +37,7 @@ console.log(contacts)
                 ))
             ) : (
                 // insert spinner here
-                <p>Loading...</p>
+                <Loader/>
             )}
         </div>
     );
