@@ -17,6 +17,7 @@ import LoginModal from "./components/login_modal.jsx";
 import {getInvoices} from "./api/getInvoices.js";
 import {data} from "autoprefixer";
 import login_modal from "./components/login_modal.jsx";
+import HeaderDashBoard from "./layouts/header-dashboard.jsx";
 
 
 const router = createBrowserRouter([
@@ -90,6 +91,14 @@ const router = createBrowserRouter([
                 <Header />
                 <InfosContact/>
                 <Footer />
+            </>
+        ),
+    },
+    {
+         path: '/dashboard',
+        element: (
+            <>
+                <HeaderDashBoard/>
             </>
         ),
     },

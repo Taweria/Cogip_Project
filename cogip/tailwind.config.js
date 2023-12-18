@@ -14,7 +14,8 @@ export default {
         },
         extend: {
             colors: {
-                'yellow': '#F9DE4E'
+                'yellow': '#F9DE4E',
+                'lavande': '#9698D6'
             },
             backgroundImage: {
                 'rect-17': "url('/src/assets/rect-17.svg')",

@@ -9,7 +9,7 @@ export function useIsHome() {
 
     useEffect(() => {
         const isHome = () => {
-            return location === '/' && size > 780
+            return location === '/' || location === '/dashboard' && size > 780
         }
         setHome(isHome())
         const handleResize = () => {
