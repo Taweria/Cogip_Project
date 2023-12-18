@@ -11,6 +11,7 @@ const AllInvoiceTable = () => {
         getInvoices()
             .then(res => {
                 const formattedInvoices = res.data.map(data => ({
+                    id:data.id,
                     Invoices_number: data.ref,
                     Due_Date: new Date(data.due_at).toLocaleDateString('en-US', {
                         year: 'numeric',
@@ -34,6 +35,10 @@ const AllInvoiceTable = () => {
     }, []);
 
     const company = invoicesData.map(data => data.Company);
+    const handleDetailsRow = (rowData) => {
+        const id = rowData.id;
+
+    }
     return (
         <div>
             {loading ? (
@@ -47,6 +52,7 @@ const AllInvoiceTable = () => {
                     placeholderSearch={"Search company"}
                     paginator
                     valueSearch={"Company"}
+                    detailsRow={handleDetailsRow}
                 />
             )}
         </div>

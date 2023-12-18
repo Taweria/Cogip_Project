@@ -11,6 +11,7 @@ const AllContactsTable = () => {
         getContacts()
             .then(res => {
                 const formattedContacts = res.data.map(data => ({
+                    id:data.id,
                     Name: data.name,
                     Phone: data.phone,
                     Mail: data.email,
@@ -31,6 +32,10 @@ const AllContactsTable = () => {
     }, []);
 
     const contacts = data.map(data => data.Name);
+    const handleShowContact = (rowData) => {
+        const id = rowData.id
+        window.location.pathname = `/showcontact/${id}`
+    }
 
     return (
         <div>
@@ -45,6 +50,7 @@ const AllContactsTable = () => {
                     placeholderSearch={"Search contacts"}
                     paginator
                     valueSearch={"Name"}
+                    detailsRow={handleShowContact}
                 />
             )}
         </div>

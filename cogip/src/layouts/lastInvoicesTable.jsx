@@ -37,14 +37,15 @@ const LastInvoices = () => {
 
     return (
        <div className="w-full mt-48">
-           <Suspense fallback={<Loader/>}>
-               <Await resolve={data}>
-                   <Table
-                       dataTable={data}
-                       titleTable={"Last invoices"}
-                       placeholderSearch={"Ceci est un placeholder" }/>
-               </Await>
-           </Suspense>
+           {loading ? (
+               <Loader />
+           ) : (
+               <Table
+                   dataTable={data}
+                   titleTable={"Last invoices"}
+                   />
+
+           )}
            <div className="relative">
                 <img src={manager} alt="manager" className={"absolute right-0 mt-16 " + (window.location.pathname == "/" ? "" : "opacity-0") } />
             </div>
