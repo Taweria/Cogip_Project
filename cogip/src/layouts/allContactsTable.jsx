@@ -13,6 +13,7 @@ const AllContactsTable = () => {
                 const formattedContacts = res.data.map(data => ({
                     Name: data.name,
                     Phone: data.phone,
+                    Mail: data.email,
                     Company: data.company_name,
                     Created_At: new Date(data.created_at).toLocaleDateString('en-US', {
                         year: 'numeric',
