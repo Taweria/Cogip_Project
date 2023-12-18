@@ -13,7 +13,6 @@ const People = () => {
         .then((contacts) => {
             if (id.id) {
                 const filteredContacts = contacts.data.filter((contact) => contact.company_id === parseInt(id.id));
-                console.log(filteredContacts);
                 setContacts(filteredContacts);
             } else {
                 setContacts(contacts.data);
@@ -21,7 +20,6 @@ const People = () => {
         .catch((error) => console.error('Error fetching contacts:', error.message));
     }, [])
 
-console.log(contacts)
     return (
         <div className="flex w-10/12 flex-col md:flex-row md:flex-wrap md:gap-8">
             {Array.isArray(contacts) && contacts.length > 0 ? (
