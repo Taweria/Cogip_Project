@@ -15,7 +15,7 @@ const InfosCompany = () => {
 
     return (
          <div>
-            <div>
+            <div className={"w-1/2 ml-24"}>
                 <DynamicTitle title={company.name}/>
             </div>
             <div className="pt-32 ml-24">

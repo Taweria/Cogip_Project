@@ -71,6 +71,7 @@ const Table = ({dataTable, elementFilter, isFilter, titleTable, placeholderSearc
                     tableStyle={{ maxWidth: '100%' }}
                     dataKey={"id"}
                     onSelectionChange={(e) => detailsRow(e.value)}
+                    rowClassName={"py-2"}
                     {...(paginator
                         ? {
                             paginator: true,

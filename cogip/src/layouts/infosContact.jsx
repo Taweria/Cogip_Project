@@ -16,7 +16,7 @@ const InfosContact = () => {
 
     return (
          <div>
-            <div>
+            <div className={"w-1/2 ml-24"}>
                 <DynamicTitle title={contact.name}/>
             </div>
             <div className="flex flex-col items-center md:flex-row-reverse md:justify-between">
