@@ -18,6 +18,7 @@ import {getInvoices} from "./api/getInvoices.js";
 import {data} from "autoprefixer";
 import login_modal from "./components/login_modal.jsx";
 import HeaderDashBoard from "./layouts/header-dashboard.jsx";
+import Statistics from "./components/statistics.jsx";
 
 
 const router = createBrowserRouter([
@@ -98,6 +99,7 @@ const router = createBrowserRouter([
         element: (
             <>
                 <HeaderDashBoard/>
+                <Statistics/>
             </>
         ),
     },
