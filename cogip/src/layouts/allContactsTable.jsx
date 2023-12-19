@@ -40,7 +40,7 @@ const AllContactsTable = () => {
     return (
         <div>
             {loading ? (
-                <Loader />
+                <Loader color={"#4fa94d"}/>
             ) : (
                 <Table
                     dataTable={data}

@@ -36,7 +36,7 @@ const LastContacts = () => {
     return (
         <section>
             {loading ? (
-                <Loader />
+                <Loader color={"#4fa94d"}/>
             ) : (
                 <>
                     <Table

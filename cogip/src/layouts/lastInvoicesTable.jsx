@@ -38,7 +38,7 @@ const LastInvoices = () => {
     return (
        <div className="w-full mt-48">
            {loading ? (
-               <Loader />
+               <Loader color={"#4fa94d"}/>
            ) : (
                <Table
                    dataTable={data}

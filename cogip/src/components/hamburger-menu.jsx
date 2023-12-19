@@ -5,25 +5,8 @@ import LoginModal from "./login_modal.jsx";
 
 
 
-const HamburgerMenu = () => {
-    const listNav = [
-        {
-            url: '/',
-            content: 'Home'
-        },
-        {
-            url: '/invoices',
-            content: 'Invoices'
-        },
-        {
-            url: '/companies',
-            content: 'Companies'
-        },
-        {
-            url: '/contact',
-            content: 'Contacts'
-        },
-    ];
+const HamburgerMenu = ({listNav}) => {
+
 
     const [isOpen, setOpen] = useState(false);
     const [path, setPath] = useState('');

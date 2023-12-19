@@ -1,6 +1,6 @@
 import {Oval} from "react-loader-spinner";
 
-const Loader = () => {
+const Loader = ({color}) => {
 
 
     return (
@@ -12,7 +12,7 @@ const Loader = () => {
                         wrapperClass=""
                         visible={true}
                         ariaLabel='oval-loading'
-                        secondaryColor="#4fa94d"
+                        secondaryColor={color}
                         strokeWidth={2}
                         strokeWidthSecondary={2}/>
             </div>

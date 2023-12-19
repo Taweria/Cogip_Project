@@ -19,6 +19,7 @@ import {data} from "autoprefixer";
 import login_modal from "./components/login_modal.jsx";
 import HeaderDashBoard from "./layouts/header-dashboard.jsx";
 import Statistics from "./components/statistics.jsx";
+import NavDashboard from "./components/nav-dashboard.jsx";
 
 
 const router = createBrowserRouter([
@@ -98,6 +99,7 @@ const router = createBrowserRouter([
          path: '/dashboard',
         element: (
             <>
+                <NavDashboard/>
                 <HeaderDashBoard/>
                 <Statistics/>
             </>
