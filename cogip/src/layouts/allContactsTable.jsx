@@ -1,27 +1,60 @@
 import React, { useState, useEffect } from 'react';
-import PaginationTable from "../components/pagination-table.jsx";
-import getData from "../api/getData.js";
+import Table from "../components/table.jsx";
+import { getContacts } from '../api/contacts.js';
+import Loader from "./loader.jsx";
 
 const AllContactsTable = () => {
     const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        getData()
-            .then(data => setData(data))
-            .catch(error => console.error('Error fetching data:', error.message));
+        getContacts()
+            .then(res => {
+                const formattedContacts = res.data.map(data => ({
+                    id:data.id,
+                    Name: data.name,
+                    Phone: data.phone,
+                    Mail: data.email,
+                    Company: data.company_name,
+                    Created_At: new Date(data.created_at).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit'
+                    })
+                }));
+                setData(formattedContacts);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.error(error.message);
+                setLoading(false);
+            });
     }, []);
 
-    // Table keys
-    const tableKey = ["userId", "id", "title", "body"];
-    // Table heads
-    const tableHead = ["Name", "Phone", "Mail", "Company", "Created at"];
+    const contacts = data.map(data => data.Name);
+    const handleShowContact = (rowData) => {
+        const id = rowData.id
+        window.location.pathname = `/showcontact/${id}`
+    }
 
     return (
         <div>
-            <PaginationTable data={data} loading={loading} tableKey={tableKey} tableHead={tableHead}/>
+            {loading ? (
+                <Loader />
+            ) : (
+                <Table
+                    dataTable={data}
+                    isFilter
+                    titleTable={"All contacts"}
+                    elementFilter={contacts}
+                    placeholderSearch={"Search contacts"}
+                    paginator
+                    valueSearch={"Name"}
+                    detailsRow={handleShowContact}
+                />
+            )}
         </div>
-    )
+    );
 }
 
 export default AllContactsTable;

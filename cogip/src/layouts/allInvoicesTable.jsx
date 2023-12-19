@@ -1,27 +1,62 @@
 import React, { useState, useEffect } from 'react';
-import getData from "../api/getData.js";
-import PaginationTable from "../components/pagination-table.jsx";
+import Table from "../components/table.jsx";
+import { getInvoices } from "../api/getInvoices.js";
+import Loader from "./loader.jsx";
 
 const AllInvoiceTable = () => {
-    const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [invoicesData, setInvoicesData] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        getData()
-            .then(data => setData(data))
-            .catch(error => console.error('Error fetching data:', error.message));
+        getInvoices()
+            .then(res => {
+                const formattedInvoices = res.data.map(data => ({
+                    id:data.id,
+                    Invoices_number: data.ref,
+                    Due_Date: new Date(data.due_at).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit'
+                    }),
+                    Company: data.name,
+                    Created_At: new Date(data.updated_at).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit'
+                    })
+                }));
+                setInvoicesData(formattedInvoices);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.error(error.message);
+                setLoading(false);
+            });
     }, []);
 
-    // Table keys
-    const tableKey = ["userId", "id", "title", "body"];
-    // Table heads
-    const tableHead = ["Invoice number", "Dates due", "Company", "Created at"];
+    const company = invoicesData.map(data => data.Company);
+    const handleDetailsRow = (rowData) => {
+        const id = rowData.id;
 
+    }
     return (
         <div>
-            <PaginationTable data={data} loading={loading} tableKey={tableKey} tableHead={tableHead}/>
+            {loading ? (
+                <Loader />
+            ) : (
+                <Table
+                    dataTable={invoicesData}
+                    isFilter
+                    titleTable={"All invoices"}
+                    elementFilter={company}
+                    placeholderSearch={"Search company"}
+                    paginator
+                    valueSearch={"Company"}
+                    detailsRow={handleDetailsRow}
+                />
+            )}
         </div>
-    )
+    );
 }
 
 export default AllInvoiceTable;

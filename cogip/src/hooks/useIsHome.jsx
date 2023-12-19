@@ -1,15 +1,17 @@
 import {useEffect, useState} from "react";
 
 export function useIsHome() {
-    const location = window.location.href;
+    const location = window.location.pathname;
     const [size, setSize] = useState(window.innerWidth)
-    const isHome = () => {
-        return location === 'http://localhost:5173/' && size > 780
-    }
 
-    const [home, setHome] = useState(isHome())
+
+    const [home, setHome] = useState()
 
     useEffect(() => {
+        const isHome = () => {
+            return location === '/' || location === '/dashboard' && size > 780
+        }
+        setHome(isHome())
         const handleResize = () => {
             setSize(window.innerWidth);
             setHome(isHome());
@@ -20,7 +22,7 @@ export function useIsHome() {
         return () => {
             window.removeEventListener("resize", handleResize);
         };
-    }, )
+    },)
 
     return home
 }

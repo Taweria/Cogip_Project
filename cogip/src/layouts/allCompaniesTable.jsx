@@ -1,27 +1,59 @@
 import React, { useState, useEffect } from 'react';
-import PaginationTable from "../components/pagination-table.jsx";
-import getData from "../api/getData.js";
+import Table from "../components/table.jsx";
+import { getCompanies} from '../api/companies.js';
+import Loader from "./loader.jsx";
 
-const AllCompaniesTable = () => {
+const AllContactsTable = () => {
     const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        getData()
-            .then(data => setData(data))
-            .catch(error => console.error('Error fetching data:', error.message));
+        getCompanies()
+            .then(res => {
+                const formattedCompanies = res.data.map(data => ({
+                    id:data.id,
+                    Name: data.name,
+                    TVA: data.tva,
+                    Country: data.country,
+                    Type: data.types_name,
+                    Created_At: new Date(data.created_at).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit'
+                    })
+                }));
+                setData(formattedCompanies);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.error(error.message);
+                setLoading(false);
+            });
     }, []);
 
-    // Table keys
-    const tableKey = ["userId", "id", "title", "body"];
-    // Table heads
-    const tableHead = ["Name", "TVA", "Country", "Type", "Created at"];
-
+    const companies = data.map(data => data.Name);
+    const handleShowDetail = (rowData) => {
+        const id = rowData.id
+        window.location.pathname= `/showcompany/${id}`
+    }
     return (
         <div>
-            <PaginationTable data={data} loading={loading} tableKey={tableKey} tableHead={tableHead}/>
+            {loading ? (
+                <Loader />
+            ) : (
+                <Table
+                    dataTable={data}
+                    isFilter
+                    titleTable={"All companies"}
+                    elementFilter={companies}
+                    placeholderSearch={"Search companies"}
+                    paginator
+                    valueSearch={"Name"}
+                    detailsRow={handleShowDetail}
+                />
+            )}
         </div>
-    )
+    );
 }
 
-export default AllCompaniesTable;
+export default AllContactsTable;

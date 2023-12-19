@@ -13,11 +13,19 @@ import AllInvoiceTable from "./layouts/allInvoicesTable.jsx";
 import AllContactsTable from "./layouts/allContactsTable.jsx";
 import AllCompaniesTable from "./layouts/allCompaniesTable.jsx";
 import InfosContact from "./layouts/infosContact.jsx";
+import LoginModal from "./components/login_modal.jsx";
+import {getInvoices} from "./api/getInvoices.js";
+import {data} from "autoprefixer";
+import login_modal from "./components/login_modal.jsx";
+import HeaderDashBoard from "./layouts/header-dashboard.jsx";
+import Statistics from "./components/statistics.jsx";
+import DashboardBody from "./layouts/dashboard-body.jsx";
 
 
 const router = createBrowserRouter([
     {
         path: '/',
+        errorElement:<Page404/>,
         element: (
             <>
                 <Header />
@@ -29,38 +37,36 @@ const router = createBrowserRouter([
             </>
         ),
     },
-
     {
-         path: '/showcompany',
+        errorElement:<Page404/>,
+         path: '/showcompany/:id',
         element: (
             <>
                 <Header />
-                <InfosCompany name="Pied Pipper" tva="BE87 876 767 565" country="Belgium" type="Supplier"/>
+                <InfosCompany/>
                 <ContactPeople />
                 <LastInvoices />
                 <Footer />
             </>
         ),
     },
-
     {
          path: '/invoices',
+        errorElement:<Page404/>,
         element: (
             <>
                 <Header />
-                <DynamicTitle title="All invoices"/>
                 <AllInvoiceTable />
                 <Footer />
             </>
         ),
     },
-
     {
          path: '/contact',
+        errorElement:<Page404/>,
         element: (
             <>
                 <Header />
-                <DynamicTitle title="All contacts"/>
                 <AllContactsTable />
                 <Footer />
             </>
@@ -69,11 +75,10 @@ const router = createBrowserRouter([
 
     {
          path: '/companies',
+        errorElement:<Page404/>,
         element: (
             <>
                 <Header />
-                <DynamicTitle title="All companies"/>
-                <InfosCompany name="Pied Pipper" tva="BE87 876 767 565" country="Belgium" type="Supplier"/>
                 <AllCompaniesTable />
                 <Footer />
             </>
@@ -81,16 +86,26 @@ const router = createBrowserRouter([
     },
 
     {
-         path: '/showcontact',
+         path: '/showcontact/:id',
         element: (
             <>
                 <Header />
-                <InfosContact contact="Jane Smith" phone="0476 76 76 76" mail="smith@gmail.com" company="Pied Pipper"/>
+                <InfosContact/>
                 <Footer />
             </>
         ),
     },
-
+    {
+         path: '/dashboard',
+        element: (
+            <>
+                <div className="bg-bg-dashboard">
+                    <HeaderDashBoard/>
+                    <DashboardBody/>
+                </div>
+            </>
+        ),
+    },
     {
          path: '*',
         element: (
