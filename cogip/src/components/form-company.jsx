@@ -20,7 +20,7 @@ const FormCompany = () => {
                 <input type="text" name="name" placeholder="Name" value={company.name} className="bg-bg-dashboard p-4 m-4 rounded-md" />
                 <input type="text" name="tva" placeholder="TVA" value={company.tva} className="bg-bg-dashboard p-4 m-4 rounded-md" />
                 <input type="text" name="country" placeholder="Country" value={company.country} className="bg-bg-dashboard p-4 m-4 rounded-md" />
-                <button type="submit" className="bg-lavande text-white flex flex-col justify-start items-start p-4 m-2"> Save </button>
+                <button type="submit" className="bg-lavande text-white font-inter flex flex-col justify-start items-start p-4 m-2"> Save </button>
             </form>
         </div>
     )
