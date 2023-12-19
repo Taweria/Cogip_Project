@@ -11,8 +11,7 @@ const FormInvoice = () => {
         getInvoice(id)
         .then((invoice) =>  setInvoice(invoice.data))
         .catch((error) => console.error('Error fetching invoice:', error.message));
-    }, []);
-
+    }, [id]);
 
     return (
         <div className="bg-white rounded-md shadow-md shadow-gray-200 w-11/12 mx-auto pt-16">
@@ -21,6 +20,7 @@ const FormInvoice = () => {
                 <input type="text" name="reference" placeholder="Reference" value={invoice.ref} className="bg-bg-dashboard p-4 m-4 rounded-md" />
                 <input type="text" name="price" placeholder="Price" className="bg-bg-dashboard p-4 m-4 rounded-md" />
                 <SelectCompanies/>
+                <button type="submit" className="bg-lavande text-white font-bold flex flex-col justify-start items-start p-4 m-2"> Save </button>
             </form>
         </div>
     )

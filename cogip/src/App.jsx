@@ -15,6 +15,8 @@ import InfosContact from "./layouts/infosContact.jsx";
 import DashboardBody from "./layouts/dashboard-body.jsx";
 import FormInvoice from "./components/form-invoice.jsx";
 import HeaderDashBoard from "./layouts/dashboard-header.jsx";
+import FormCompany from "./components/form-company.jsx";
+import FormContact from "./components/form-contact.jsx";
 
 
 const router = createBrowserRouter([
@@ -119,6 +121,50 @@ const router = createBrowserRouter([
                 <div className="bg-bg-dashboard">
                     <HeaderDashBoard/>
                     <FormInvoice/>
+                </div>
+            </>
+        ),
+    },
+     {
+         path: 'dashboard/new-company',
+        element: (
+            <>
+                <div className="bg-bg-dashboard">
+                    <HeaderDashBoard/>
+                    <FormCompany/>
+                </div>
+            </>
+        ),
+    },
+    {
+         path: 'dashboard/new-company/:id',
+        element: (
+            <>
+                <div className="bg-bg-dashboard">
+                    <HeaderDashBoard/>
+                    <FormCompany/>
+                </div>
+            </>
+        ),
+    },
+     {
+         path: 'dashboard/new-contact',
+        element: (
+            <>
+                <div className="bg-bg-dashboard">
+                    <HeaderDashBoard/>
+                    <FormContact/>
+                </div>
+            </>
+        ),
+    },
+    {
+         path: 'dashboard/new-contact/:id',
+        element: (
+            <>
+                <div className="bg-bg-dashboard">
+                    <HeaderDashBoard/>
+                    <FormContact/>
                 </div>
             </>
         ),
