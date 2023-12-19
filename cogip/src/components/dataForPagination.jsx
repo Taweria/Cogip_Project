@@ -3,6 +3,9 @@ import Loader from "../layouts/loader.jsx";
 import {Link} from "react-router-dom";
 
 const DataForPagination = ({data, loading, value, link }) => {
+    console.log(data);
+
+    const id = data.id;
     
     if(loading) {
         return <Loader/>
@@ -13,7 +16,7 @@ const DataForPagination = ({data, loading, value, link }) => {
                 {data.map((item) => (
                         <tr>
                             {value.map((key) => (
-                                <td key={key}><Link to={`/dashboard/${link}`}>{item[key]}</Link></td>
+                                <td key={key}><Link to={`/dashboard/${link}/${item.id}`}>{item[key]}</Link></td>
                             ))}
                         </tr>
                 ))}

@@ -1,7 +1,7 @@
 import React from 'react';
-import {getContactsCount} from "../api/contacts.js";
-import {getInvoicesCount} from "../api/getInvoices.js";
-import {getCompaniesCount} from "../api/companies.js";
+import {getContacts} from "../api/contacts.js";
+import {getInvoices} from "../api/getInvoices.js";
+import {getCompanies} from "../api/companies.js";
 import {useState, useEffect} from "react";
 
 const Statistics = () => {
@@ -10,20 +10,20 @@ const Statistics = () => {
     const [companies, setCompanies] = useState([]);
 
     useEffect(() => {
-    getContactsCount()
-    .then((contacts) =>  setContacts(contacts.data))
+    getContacts()
+    .then((contacts) =>  setContacts(contacts.data.length))
     .catch((error) => console.error('Error fetching contacts:', error.message));
     }, []);
 
-    useEffect(() => {
-    getInvoicesCount()
-    .then((invoices) =>  setInvoices(invoices.data))
+     useEffect(() => {
+    getInvoices()
+    .then((invoices) =>  setInvoices(invoices.data.length))
     .catch((error) => console.error('Error fetching invoices:', error.message));
     }, []);
 
-    useEffect(() => {
-    getCompaniesCount()
-    .then((companies) =>  setCompanies(companies.data))
+     useEffect(() => {
+    getCompanies()
+    .then((companies) =>  setCompanies(companies.data.length))
     .catch((error) => console.error('Error fetching companies:', error.message));
     }, []);
 
