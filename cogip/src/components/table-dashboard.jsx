@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import DataForPagination from './dataForPagination.jsx';
 
 
-const TableDashboard = ({data, loading, tableKey, tableHead}) => {
+const TableDashboard = ({data, loading, tableKey, tableHead, link}) => {
 
     return (
         <div className="w-full">   
@@ -15,7 +15,7 @@ const TableDashboard = ({data, loading, tableKey, tableHead}) => {
                     </tr>
                 </thead>
                 <tbody>
-                    <DataForPagination data={data} loading={loading} value={tableKey}/>
+                    <DataForPagination data={data} loading={loading} value={tableKey} link={link}/>
                 </tbody>
             </table>
         </div>

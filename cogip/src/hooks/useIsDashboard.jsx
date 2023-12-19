@@ -1,20 +1,20 @@
 import {useEffect, useState} from "react";
 
-export function useIsHome() {
+export function useIsDashboard() {
     const location = window.location.pathname;
     const [size, setSize] = useState(window.innerWidth)
 
 
-    const [home, setHome] = useState()
+    const [dashboard, setDashboard] = useState()
 
     useEffect(() => {
-        const isHome = () => {
-            return location === '/' && size > 780
+        const isDashboard = () => {
+            return location === '/dashboard' && size > 780
         }
-        setHome(isHome())
+        setDashboard(isDashboard())
         const handleResize = () => {
             setSize(window.innerWidth);
-            setHome(isHome());
+            setDashboard(isDashboard());
         };
 
         window.addEventListener("resize", handleResize);
@@ -24,5 +24,5 @@ export function useIsHome() {
         };
     },)
 
-    return home
+    return dashboard
 }

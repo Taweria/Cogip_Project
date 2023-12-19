@@ -11,3 +11,15 @@ export function getInvoices(){
             throw error;
         });
 }
+
+export function getInvoicesCount(){
+    return Axios.get("https://cogip-990e44950882.herokuapp.com/invoices/count")
+        .then(response => {
+            const invoicesCount = response.data;
+            return invoicesCount;
+        })
+        .catch(error => {
+            console.error("Error fetching invoices count:", error);
+            throw error;
+        });
+}

@@ -23,3 +23,15 @@ export function getCompanies(){
         throw error;
       });
 }
+
+export function getCompaniesCount(){
+    return Axios.get("https://cogip-990e44950882.herokuapp.com/companies/count")
+      .then(response => {
+        const companiesCount = response.data;
+        return companiesCount;
+      })
+      .catch(error => {
+        console.error("Error fetching companies count:", error);
+        throw error;
+      });
+}

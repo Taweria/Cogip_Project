@@ -24,3 +24,15 @@ export function getContacts(){
       });
 }
 
+export function getContactsCount(){
+    return Axios.get("https://cogip-990e44950882.herokuapp.com/contacts/count")
+      .then(response => {
+        const contactsCount = response.data;
+        return contactsCount;
+      })
+      .catch(error => {
+        console.error("Error fetching contacts count:", error);
+        throw error;
+      });
+}
+
