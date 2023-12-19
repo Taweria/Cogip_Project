@@ -23,3 +23,15 @@ export function getInvoicesCount(){
             throw error;
         });
 }
+
+export function getInvoice(id){
+    return Axios.get("https://cogip-990e44950882.herokuapp.com/invoices/"+id.id)
+      .then(response => {
+        const invoice = response.data;
+        return invoice;
+      })
+      .catch(error => {
+        console.error("Error fetching invoice:", error);
+        throw error;
+      });
+}

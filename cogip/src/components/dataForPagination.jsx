@@ -3,8 +3,6 @@ import Loader from "../layouts/loader.jsx";
 import {Link} from "react-router-dom";
 
 const DataForPagination = ({data, loading, value, link }) => {
-    console.log(data);
-
     const id = data.id;
     
     if(loading) {

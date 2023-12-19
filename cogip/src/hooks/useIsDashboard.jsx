@@ -9,7 +9,7 @@ export function useIsDashboard() {
 
     useEffect(() => {
         const isDashboard = () => {
-            return location === '/dashboard' && size > 780
+            return size > 780
         }
         setDashboard(isDashboard())
         const handleResize = () => {
