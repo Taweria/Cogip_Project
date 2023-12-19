@@ -4,7 +4,7 @@ import { useParams } from "react-router";
 import React, { useState, useEffect, useMemo } from 'react';
 import {getContact} from '../api/contacts.js';
 
-const InfosContact = () => {
+const InfosContact = ({user}) => {
     const id = useParams();
     const [contact, setContact] = useState([]);
 

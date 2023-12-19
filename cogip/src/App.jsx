@@ -100,10 +100,13 @@ const router = createBrowserRouter([
          path: '/dashboard',
         element: (
             <>
-                <div className="bg-bg-dashboard">
+                <div className="bg-bg-dashboard flex">
                     <NavDashboard/>
-                    <HeaderDashBoard/>
-                    <DashboardBody/>
+                    <div className={"w-full"}>
+                        <HeaderDashBoard/>
+                        <DashboardBody/>
+                    </div>
+
                 </div>
             </>
         ),

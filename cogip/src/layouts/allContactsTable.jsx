@@ -36,11 +36,10 @@ const AllContactsTable = () => {
         const id = rowData.id
         window.location.pathname = `/showcontact/${id}`
     }
-
     return (
         <div>
             {loading ? (
-                <Loader color={"#4fa94d"}/>
+                <Loader primaryColor={"#F9DE4E"} secondaryColor={"#6dafa7"}/>
             ) : (
                 <Table
                     dataTable={data}

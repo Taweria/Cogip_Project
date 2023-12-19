@@ -15,6 +15,7 @@ export default {
         extend: {
             colors: {
                 'yellow': '#F9DE4E',
+                'green-blue':'#6dafa7',
                 'lavande': '#9698D6',
                 'bg-dashboard': '#f5f5fb',
                 'violet': '#4d4cac',

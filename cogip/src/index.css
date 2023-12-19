@@ -30,7 +30,7 @@
     @apply mx-2 p-1
 }
 
-tr:nth-child(even){
+#main-table tr:nth-child(even){
     @apply bg-gray-100
 }
 

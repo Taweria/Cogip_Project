@@ -1,21 +1,23 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Loader from "../layouts/loader.jsx";
 
 const DataForPagination = ({data, loading, value }) => {
-    
-    if(loading) {
-        return <Loader/>
-    }
+
 
     return (
         <>
-                {data.map((item) => (
-                    <tr>
+            {loading ?
+                data.map((item) => (
+                    <tr className={"border-b"}>
                         {value.map((key) => (
-                             <td key={key}>{item[key]}</td>
+                            <td key={key} className={"p-4"}>{item[key]}</td>
                         ))}
                     </tr>
-                ))}
+                ))
+                :
+
+                <Loader primaryColor={"#4d4cac"} secondaryColor={"#ffffff"}/>
+            }
         </>
     )
 }

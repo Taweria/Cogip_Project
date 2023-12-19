@@ -20,19 +20,21 @@ const navDashboard = () => {
             content: 'Contacts'
         },
     ];
-  return (
-      <div>
-          <nav>
-              <div id="profil">
-                  <Avatar name={"name"}/>
-              </div>
-              <div id="link">
-                  <HamburgerMenu listNav={listNav}/>
-              </div>
-              <div id="logout"></div>
-          </nav>
-      </div>
-  )
+    return (
+        <div className={'h-screen w-1/4 '}>
+            <div className={"w-1/6 h-full fixed bg-white"}>
+                <nav className={"flex flex-col h-full"}>
+                    <div id="profil" className={"w-20 flex flex-col"}>
+                        <Avatar name={"name"}/>
+                        <p>name</p>
+                    </div>
+                    <HamburgerMenu listNav={listNav} userLog={false}/>
+
+                </nav>
+            </div>
+        </div>
+
+    )
 }
 
 export default navDashboard;
