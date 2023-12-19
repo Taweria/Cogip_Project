@@ -20,7 +20,7 @@ const FormInvoice = () => {
                 <input type="text" name="reference" placeholder="Reference" value={invoice.ref} className="bg-bg-dashboard p-4 m-4 rounded-md" />
                 <input type="text" name="price" placeholder="Price" className="bg-bg-dashboard p-4 m-4 rounded-md" />
                 <SelectCompanies/>
-                <button type="submit" className="bg-lavande text-white font-bold flex flex-col justify-start items-start p-4 m-2"> Save </button>
+                <button type="submit" className="bg-lavande text-white flex flex-col justify-start items-start p-4 m-2"> Save </button>
             </form>
         </div>
     )
