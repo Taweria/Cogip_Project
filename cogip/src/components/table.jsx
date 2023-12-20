@@ -51,7 +51,7 @@ const Table = ({dataTable, elementFilter, isFilter, titleTable, placeholderSearc
                     ease: 'easeOut'
                 }}
             >
-                <div className={"flex justify-between pb-8 items-center"}>
+                <div className={"flex flex-col mb-24 md:flex md:justify-between md:pb-8 md:items-center"}>
                     <DynamicTitle title={titleTable}/>
                     {isFilter && elementFilter && (
                         <InputSearch

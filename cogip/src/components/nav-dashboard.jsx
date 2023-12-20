@@ -31,7 +31,7 @@ const navDashboard = () => {
                 initial={{x: -600, opacity: -2}}
                 animate={{x: 0, opacity: 1}}
                 transition={{
-                    duration: 2,
+                    duration: 1.5,
                     type: 'tween',
                     ease: 'easeOut'
                 }}

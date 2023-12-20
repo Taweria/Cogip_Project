@@ -60,26 +60,25 @@ const HamburgerMenu = ({listNav, userLog}) => {
                 ))}
             </ul>
             <ul className={`md:flex md:space-x-4  ${isOpen ? 'block  mb-3' : 'hidden'}`}>
-                {userLog || !path.startsWith("/dashboard") ? (
+                {userLog && !path.startsWith("/dashboard") || !userLog && !path.startsWith("/dashboard") ? (
                     <>
                         <li className={"btn-link-default bg-white rounded-xl flex items-center"}><BtnSignUp isLog={userLog}/></li>
                         <li className={"btn-link-default flex items-center"}>
-                            <button onClick={openModal}> login</button>
+                            <button onClick={openModal}>Login</button>
                         </li>
                     </>
-
                 ) : (
-
-                    <li className={"btn-link-default rounded-xl w-full pt-10 flex items-center justify-between"}>
-                        <div className={"w-8"}>
-                            <Avatar name={"name"}/>
-                        </div>
-                        <Link to={"/signUp"} className={"font-inter text-lavande p-3"}>Logout</Link>
-                    </li>
-                )
-                }
-
+                    path.startsWith("/dashboard") && (
+                        <li className={"btn-link-default rounded-xl w-full pt-10 flex items-center justify-between"}>
+                            <div className={"w-8"}>
+                                <Avatar name={"name"}/>
+                            </div>
+                            <Link to={"/"} className={"font-inter text-lavande p-3"}>Logout</Link>
+                        </li>
+                    )
+                )}
             </ul>
+
             {isModalOpen && <LoginModal isOpen={isModalOpen} onClose={closeModal}/>}
         </div>
     );
