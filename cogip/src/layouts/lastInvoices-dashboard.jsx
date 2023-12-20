@@ -15,7 +15,11 @@ const LastInvoicesDashboard = () => {
       .then((invoices) => {
         const formattedInvoices = invoices.data.slice(0, 5).map((invoice) => ({
           ...invoice,
-          due_at: new Date(invoice.due_at).toLocaleDateString(),
+          due_at: new Date(invoice.due_at).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit'
+            }),
         }));
         setInvoices(formattedInvoices);
       })
