@@ -6,6 +6,10 @@ import { useParams } from "react-router-dom";
 const FormInvoice = () => {
     const [invoice, setInvoice] = useState({});
     const id = useParams();
+    const dt = new Date (invoice.due_at);
+    const day = ("0" + dt.getDate()).slice(-2);
+    const month = ("0" + (dt.getMonth() + 1)).slice(-2);
+    const date = dt.getFullYear() + "-" + month + "-" + day;
 
     useEffect(() => {
         getInvoice(id)
@@ -18,7 +22,7 @@ const FormInvoice = () => {
             <h2 className="font-inter text-xl font-bold border-b-2 border-slate-100 pb-4 mx-6 mt-4">New Invoice</h2>
             <form className="flex flex-col pt-8 px-6">
                 <input type="text" name="reference" placeholder="Reference" value={invoice.ref} className="bg-bg-dashboard p-4 m-4 rounded-md" />
-                <input type="text" name="price" placeholder="Price" className="bg-bg-dashboard p-4 m-4 rounded-md" />
+                <input type="date" name="date" value={date} className="bg-bg-dashboard p-4 m-4 rounded-md" />
                 <SelectCompanies/>
                 <button type="submit" className="bg-lavande text-white font-inter flex flex-col justify-start items-start p-4 m-2"> Save </button>
             </form>
