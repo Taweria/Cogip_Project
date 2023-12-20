@@ -7,7 +7,6 @@ import Loader from "../layouts/loader.jsx";
 const People = () => {
     const id = useParams();
     const [contacts, setContacts] = useState([]);
-
     useEffect(() => {
         getContacts()
         .then((contacts) => {

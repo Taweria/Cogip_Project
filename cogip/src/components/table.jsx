@@ -38,7 +38,6 @@ const Table = ({dataTable, elementFilter, isFilter, titleTable, placeholderSearc
         setFilter(matchingData);
         setFirst(0);
     };
-    console.log(filter)
 
     return (
         <>
