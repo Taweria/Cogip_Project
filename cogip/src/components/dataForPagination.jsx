@@ -10,7 +10,7 @@ const DataForPagination = ({data, loading, value, link }) => {
 
             {loading ?
                 data.map((item) => (
-                    <tr key={item} className={"border-b"}>
+                    <tr key={item.id} className={"border-b"}>
                         {value.map((key) => (
                             <td key={key} className={"p-4"}><Link to={`/dashboard/${link}/${item.id}`}>{item[key]}</Link></td>
                         ))}

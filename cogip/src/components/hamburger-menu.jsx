@@ -4,8 +4,6 @@ import {useEffect, useState} from "react";
 import LoginModal from "./login_modal.jsx";
 import Avatar from "./avatar.jsx";
 import BtnSignUp from "./btn-signUp.jsx";
-import login_modal from "./login_modal.jsx";
-
 
 const HamburgerMenu = ({listNav, userLog}) => {
 
@@ -27,11 +25,11 @@ const HamburgerMenu = ({listNav, userLog}) => {
     };
 
     const displayLogBtn = () => {
-        return path === "/dashboard" ? "md:flex md:flex-col md:justify-between h-full" : "md:flex md:justify-between md:w-full font-medium"
+        return path.startsWith('/dashboard') ? "md:flex md:flex-col md:justify-between h-full" : "md:flex md:justify-between md:w-full font-medium"
     }
 
     const displayListNav = () => {
-        if (path !== "/dashboard") {
+        if (path !== "/dashboard" && !path.startsWith('/dashboard')) {
             return `md:flex md:flex-wrap gap-2 md:space-x-5 md:h-10 md:w-2/3 font-roboto font-black ${isOpen ? 'block border-b  mb-3' : 'hidden'}`
         } else {
             return `md:flex md:flex-col md:border-b gap-3 items-center h-full`
@@ -39,9 +37,9 @@ const HamburgerMenu = ({listNav, userLog}) => {
     }
     const classLink = (item) => {
         if (path.startsWith('/dashboard')) {
-            return path === item.url ? "border-r-4 border-lavande flex w-full" : "flex w-full";
+            return path.endsWith(item.url) ? "border-r-4 border-lavande flex w-full" : "flex w-full";
         } else {
-            return path === item.url ? "border border-black btn-link-default " : "border-none btn-link-default";
+            return path.endsWith(item.url)  ? "border border-black btn-link-default " : "border-none btn-link-default";
         }
     };
 
@@ -62,9 +60,9 @@ const HamburgerMenu = ({listNav, userLog}) => {
                 ))}
             </ul>
             <ul className={`md:flex md:space-x-4  ${isOpen ? 'block  mb-3' : 'hidden'}`}>
-                {userLog ? (
+                {userLog || !path.startsWith("/dashboard") ? (
                     <>
-                        <li className={"btn-link-default bg-white rounded-xl flex items-center"}><BtnSignUp isLog={true}/></li>
+                        <li className={"btn-link-default bg-white rounded-xl flex items-center"}><BtnSignUp isLog={userLog}/></li>
                         <li className={"btn-link-default flex items-center"}>
                             <button onClick={openModal}> login</button>
                         </li>

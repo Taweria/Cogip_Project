@@ -12,7 +12,6 @@ import AllInvoiceTable from "./layouts/allInvoicesTable.jsx";
 import AllContactsTable from "./layouts/allContactsTable.jsx";
 import AllCompaniesTable from "./layouts/allCompaniesTable.jsx";
 import InfosContact from "./layouts/infosContact.jsx";
-import HeaderDashBoard from "./layouts/header-dashboard.jsx";
 import NavDashboard from "./components/nav-dashboard.jsx";
 import DashboardBody from "./layouts/dashboard-body.jsx";
 import FormInvoice from "./components/form-invoice.jsx";
@@ -24,78 +23,78 @@ import FormContact from "./components/form-contact.jsx";
 const router = createBrowserRouter([
     {
         path: '/',
-        errorElement:<Page404/>,
+        errorElement: <Page404/>,
         element: (
             <>
-                <Header />
-                <LastInvoices />
-                <LastContacts />
-                <LastCompanies />
-                <WorkBetter />
-                <Footer />
+                <Header/>
+                <LastInvoices/>
+                <LastContacts/>
+                <LastCompanies/>
+                <WorkBetter/>
+                <Footer/>
             </>
         ),
     },
     {
-        errorElement:<Page404/>,
-         path: '/showcompany/:id',
+        errorElement: <Page404/>,
+        path: '/showcompany/:id',
         element: (
             <>
-                <Header />
+                <Header/>
                 <InfosCompany/>
-                <ContactPeople />
-                <LastInvoices />
-                <Footer />
+                <ContactPeople/>
+                <LastInvoices/>
+                <Footer/>
             </>
         ),
     },
     {
-         path: '/invoices',
-        errorElement:<Page404/>,
+        path: '/invoices',
+        errorElement: <Page404/>,
         element: (
             <>
-                <Header />
-                <AllInvoiceTable />
-                <Footer />
+                <Header/>
+                <AllInvoiceTable/>
+                <Footer/>
             </>
         ),
     },
     {
-         path: '/contact',
-        errorElement:<Page404/>,
+        path: '/contact',
+        errorElement: <Page404/>,
         element: (
             <>
-                <Header />
-                <AllContactsTable />
-                <Footer />
-            </>
-        ),
-    },
-
-    {
-         path: '/companies',
-        errorElement:<Page404/>,
-        element: (
-            <>
-                <Header />
-                <AllCompaniesTable />
-                <Footer />
+                <Header/>
+                <AllContactsTable/>
+                <Footer/>
             </>
         ),
     },
 
     {
-         path: '/showcontact/:id',
+        path: '/companies',
+        errorElement: <Page404/>,
         element: (
             <>
-                <Header />
+                <Header/>
+                <AllCompaniesTable/>
+                <Footer/>
+            </>
+        ),
+    },
+
+    {
+        path: '/showcontact/:id',
+        element: (
+            <>
+                <Header/>
                 <InfosContact/>
-                <Footer />
+                <Footer/>
             </>
         ),
     },
     {
-         path: '/dashboard',
+        path: '/dashboard',
         element: (
             <>
                 <div className="bg-bg-dashboard flex">
@@ -104,95 +103,116 @@ const router = createBrowserRouter([
                         <HeaderDashBoard/>
                         <DashboardBody/>
                     </div>
+                </div>
+            </>
+        ),
+    },
+    {
+        path: 'dashboard/new-invoice',
+        element: (
+            <>
+                <div className="bg-bg-dashboard flex">
+                    <NavDashboard/>
+                    <div className={"w-full"}>
+                        <HeaderDashBoard/>
+                        <FormInvoice/>
+                    </div>
+                </div>
+            </>
+        ),
+    },
+    {
+        path: 'dashboard/new-invoice/:id',
+        element: (
+            <>
+                <div className="bg-bg-dashboard">
+                    <NavDashboard/>
+                    <div className={"w-full"}>
+                        <HeaderDashBoard/>
+                        <FormInvoice/>
+                    </div>
 
                 </div>
             </>
         ),
     },
     {
-         path: 'dashboard/new-invoice',
+        path: 'dashboard/new-company',
         element: (
             <>
-                <div className="bg-bg-dashboard">
-                    <HeaderDashBoard/>
-                    <FormInvoice/>
+                <div className="bg-bg-dashboard flex">
+                    <NavDashboard/>
+                    <div className={"w-full"}>
+                        <HeaderDashBoard/>
+
+                        <FormCompany/>
+                    </div>
                 </div>
             </>
         ),
     },
     {
-         path: 'dashboard/new-invoice/:id',
+        path: 'dashboard/new-company/:id',
         element: (
             <>
-                <div className="bg-bg-dashboard">
-                    <HeaderDashBoard/>
-                    <FormInvoice/>
-                </div>
-            </>
-        ),
-    },
-     {
-         path: 'dashboard/new-company',
-        element: (
-            <>
-                <div className="bg-bg-dashboard">
-                    <HeaderDashBoard/>
-                    <FormCompany/>
+                <div className="bg-bg-dashboard flex">
+                    <NavDashboard/>
+                    <div className={"w-full"}>
+                        <HeaderDashBoard/>
+                        <FormCompany/>
+
+                    </div>
                 </div>
             </>
         ),
     },
     {
-         path: 'dashboard/new-company/:id',
+        path: 'dashboard/new-contact',
         element: (
             <>
-                <div className="bg-bg-dashboard">
-                    <HeaderDashBoard/>
-                    <FormCompany/>
-                </div>
-            </>
-        ),
-    },
-     {
-         path: 'dashboard/new-contact',
-        element: (
-            <>
-                <div className="bg-bg-dashboard">
-                    <HeaderDashBoard/>
-                    <FormContact/>
+                <div className="bg-bg-dashboard flex">
+                    <NavDashboard/>
+                    <div className={"w-full"}>
+                        <HeaderDashBoard/>
+                        <FormContact/>
+                    </div>
                 </div>
             </>
         ),
     },
     {
-         path: 'dashboard/new-contact/:id',
+        path: 'dashboard/new-contact/:id',
         element: (
             <>
-                <div className="bg-bg-dashboard">
-                    <HeaderDashBoard/>
-                    <FormContact/>
+                <div className="bg-bg-dashboard flex">
+                    <NavDashboard/>
+                    <div className={"w-full"}>
+                        <HeaderDashBoard/>
+                        <FormContact/>
+                    </div>
                 </div>
             </>
         ),
     },
     {
-         path: '*',
+        path: '*',
         element: (
             <>
-                <Header />
-                <Page404 />
-                <Footer />
+                <Header/>
+                <Page404/>
+                <Footer/>
             </>
         ),
     },
 ])
+
 function App() {
 
-  return (
-    <>
-      <RouterProvider router={router}/>
-    </>
-  )
+    return (
+        <>
+            <RouterProvider router={router}/>
+        </>
+    )
 }
 
 export default App
