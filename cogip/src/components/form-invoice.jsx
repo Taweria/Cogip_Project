@@ -7,12 +7,24 @@ import {motion} from "framer-motion";
 const FormInvoice = () => {
     const [invoice, setInvoice] = useState({});
     const id = useParams();
+    
+    const dt = invoice.due_at ? new Date(invoice.due_at) : new Date();
+    const day = ("0" + dt.getDate()).slice(-2);
+    const month = ("0" + (dt.getMonth() + 1)).slice(-2);
+    const date = dt.getFullYear() + "-" + month + "-" + day;
 
     useEffect(() => {
         getInvoice(id)
         .then((invoice) =>  setInvoice(invoice.data))
         .catch((error) => console.error('Error fetching invoice:', error.message));
     }, [id]);
+
+    const handleDateChange = (e) => {
+        setInvoice({
+            ...invoice,
+            due_at: e.target.value,
+        });
+    };
 
     return (
         <motion.div
@@ -27,9 +39,9 @@ const FormInvoice = () => {
             <h2 className="font-inter text-xl font-bold border-b-2 border-slate-100 pb-4 mx-6 mt-4">New Invoice</h2>
             <form className="flex flex-col pt-8 px-6">
                 <input type="text" name="reference" placeholder="Reference" value={invoice.ref} className="bg-bg-dashboard p-4 m-4 rounded-md" />
-                <input type="text" name="price" placeholder="Price" className="bg-bg-dashboard p-4 m-4 rounded-md" />
+                <input type="date" name="date" value={date} onChange={handleDateChange} className="bg-bg-dashboard p-4 m-4 rounded-md" />
                 <SelectCompanies/>
-                <button type="submit" className="bg-lavande text-white font-bold flex flex-col justify-start items-start p-4 m-2"> Save </button>
+                <button type="submit" className="bg-lavande text-white font-inter flex flex-col justify-start items-start p-4 m-2"> Save </button>
             </form>
         </motion.div>
     )

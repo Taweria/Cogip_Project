@@ -1,4 +1,4 @@
-import SelectCompanies from "./select-companies.jsx";
+
 import { useEffect, useState } from "react";
 import { getContact } from "../api/contacts.js";
 import { useParams } from "react-router-dom";
@@ -29,7 +29,7 @@ const FormContact = () => {
                 <input type="text" name="name" placeholder="Name" value={contact.name} className="bg-bg-dashboard p-4 m-4 rounded-md" />
                 <input type="text" name="phone" placeholder="Phone" value={contact.phone} className="bg-bg-dashboard p-4 m-4 rounded-md" />
                 <input type="text" name="email" placeholder="Email" value={contact.email} className="bg-bg-dashboard p-4 m-4 rounded-md" />
-                <button type="submit" className="bg-lavande text-white font-bold flex flex-col justify-start items-start p-4 m-2"> Save </button>
+                <button type="submit" className="bg-lavande text-white font-inter flex flex-col justify-start items-start p-4 m-2"> Save </button>
             </form>
         </motion.div>
     )
