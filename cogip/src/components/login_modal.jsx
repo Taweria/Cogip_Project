@@ -8,21 +8,21 @@ const LoginModal = ({ isOpen, onClose }) => {
     const handleLogin = () => {
         if (username === 'demo' && password === 'password') {
             setError('');
-            onClose(); // Fermer le modal après un login réussi
-        } else {
+            onClose();
+        } 
+        else {
             setError('Invalid username or password. Please try again.');
         }
     };
 
     useEffect(() => {
-        // Vous pouvez ajouter du code ici pour effectuer des actions lors de l'ouverture du modal
     }, [isOpen]);
 
     return (
         <div className={`modal ${isOpen ? 'block z-50 absolute' : 'hidden'}`}>
             <div className="fixed inset-0 bg-gray-500  bg-opacity-75 blur" onClick={onClose}></div>
-            <div className="fixed bg-white rounded-lg mx-auto my-16 w-1/3 h-1/3  inset-0 flex justify-center items-center">
-                <form className={""}>
+            <div className="fixed bg-white rounded-lg mx-auto my-16 w-1/3 h-4/6 inset-0 flex justify-center items-center">
+                <form>
                     <h2 className="text-2xl font-bold mb-4">Login</h2>
                     <div className="mb-4">
                         <label htmlFor="username" className="block mb-2">Username</label>
@@ -36,7 +36,7 @@ const LoginModal = ({ isOpen, onClose }) => {
                     </div>
                     {error && <p className="text-red-500 mb-4">{error}</p>}
                     <div className="flex justify-end">
-                        <button className="bg-yellow rounded px-4 py-2" onClick={handleLogin}>Login</button>
+                        <button className="bg-yellow rounded px-4 py-2" onClick={e=>{e.preventDefault(), handleLogin()}}>Login</button>
                     </div>
                 </form>
             </div>
