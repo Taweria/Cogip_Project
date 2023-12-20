@@ -5,15 +5,21 @@ import { useParams } from "react-router-dom";
 
 const LastInvoicesDashboard = () => {
     const [invoices, setInvoices] = useState([]);
-    const loading = false;
+    const [loading, setLoading] = useState(false);
     const tableKey = ['ref', 'due_at', 'name'];
     const tableHead = ['Invoice Number', 'Dates', 'Company'];
     const id = useParams();
 
     useEffect(() => {
         getInvoices()
-        .then((invoices) =>  setInvoices(invoices.data.slice(0, 5)))
-        .catch((error) => console.error('Error fetching invoices:', error.message));
+        .then((invoices) => {
+            setInvoices(invoices.data.slice(0, 5))
+            setLoading(true)
+        })
+        .catch((error) => {
+            console.error('Error fetching invoices:', error.message)
+            setLoading(false)
+        });
     }, []);
 
     return (

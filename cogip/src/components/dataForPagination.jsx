@@ -3,21 +3,23 @@ import Loader from "../layouts/loader.jsx";
 import {Link} from "react-router-dom";
 
 const DataForPagination = ({data, loading, value, link }) => {
-    const id = data.id;
-    
-    if(loading) {
-        return <Loader/>
-    }
+
 
     return (
         <>
-                {data.map((item) => (
-                        <tr>
-                            {value.map((key) => (
-                                <td key={key}><Link to={`/dashboard/${link}/${item.id}`}>{item[key]}</Link></td>
-                            ))}
-                        </tr>
-                ))}
+
+            {loading ?
+                data.map((item) => (
+                    <tr key={item} className={"border-b"}>
+                        {value.map((key) => (
+                            <td key={key} className={"p-4"}><Link to={`/dashboard/${link}/${item.id}`}>{item[key]}</Link></td>
+                        ))}
+                    </tr>
+                ))
+                :
+
+                <Loader primaryColor={"#4d4cac"} secondaryColor={"#ffffff"}/>
+            }
         </>
     )
 }

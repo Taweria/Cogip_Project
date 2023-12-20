@@ -62,6 +62,7 @@ const Table = ({dataTable, elementFilter, isFilter, titleTable, placeholderSearc
                     )}
                 </div>
                 <DataTable
+                    id={"main-table"}
                     className={"font-black font-roboto"}
                     value={filter}
                     {...(detailsRow ? {
@@ -72,6 +73,7 @@ const Table = ({dataTable, elementFilter, isFilter, titleTable, placeholderSearc
                     dataKey={"id"}
                     onSelectionChange={(e) => detailsRow(e.value)}
                     rowClassName={"py-2"}
+
                     {...(paginator
                         ? {
                             paginator: true,
@@ -88,6 +90,7 @@ const Table = ({dataTable, elementFilter, isFilter, titleTable, placeholderSearc
                             <Column
                                 key={index}
                                 field={col}
+                                stripedRows
                                 header={col.charAt(0).toUpperCase() + col.slice(1)}
                                 className={index % 2 === 0 ? 'even-row' : 'odd-row'}
                                 {...(paginator

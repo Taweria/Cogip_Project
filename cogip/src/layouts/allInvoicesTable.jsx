@@ -42,7 +42,7 @@ const AllInvoiceTable = () => {
     return (
         <div>
             {loading ? (
-                <Loader />
+                <Loader primaryColor={"#F9DE4E"} secondaryColor={"#6dafa7"}/>
             ) : (
                 <Table
                     dataTable={invoicesData}

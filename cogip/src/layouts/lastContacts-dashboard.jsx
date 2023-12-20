@@ -5,15 +5,21 @@ import { useParams } from "react-router-dom";
 
 const LastContactsDashboard = () => {
     const [contacts, setContacts] = useState([]);
-    const loading = false;
+    const [loading, setLoading] = useState(false);
     const tableKey = ['name', 'phone', 'email'];
     const tableHead = ['Name', 'Phone', 'Email'];
     const id = useParams();
 
     useEffect(() => {
         getContacts()
-        .then((contacts) =>  setContacts(contacts.data.slice(0, 5)))
-        .catch((error) => console.error('Error fetching contacts:', error.message));
+        .then((contacts) => {
+            setContacts(contacts.data.slice(0, 5))
+            setLoading(true);
+        })
+        .catch((error) => {
+            console.error('Error fetching contacts:', error.message)
+            setLoading(false);
+        });
     }, []);
 
     return (

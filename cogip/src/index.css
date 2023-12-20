@@ -13,7 +13,7 @@
 }
 
 .btn-link-default{
-    @apply text-center px-2 py-1
+    @apply text-center px-2 py-1 flex items-center
 }
 
 .p-datatable-thead {
@@ -30,7 +30,12 @@
     @apply mx-2 p-1
 }
 
-tr:nth-child(even){
+
+td{
+     @apply p-2
+ }
+
+#main-table tr:nth-child(even){
     @apply bg-gray-100
 }
 

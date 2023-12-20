@@ -12,6 +12,8 @@ import AllInvoiceTable from "./layouts/allInvoicesTable.jsx";
 import AllContactsTable from "./layouts/allContactsTable.jsx";
 import AllCompaniesTable from "./layouts/allCompaniesTable.jsx";
 import InfosContact from "./layouts/infosContact.jsx";
+import HeaderDashBoard from "./layouts/header-dashboard.jsx";
+import NavDashboard from "./components/nav-dashboard.jsx";
 import DashboardBody from "./layouts/dashboard-body.jsx";
 import FormInvoice from "./components/form-invoice.jsx";
 import HeaderDashBoard from "./layouts/dashboard-header.jsx";
@@ -96,9 +98,13 @@ const router = createBrowserRouter([
          path: '/dashboard',
         element: (
             <>
-                <div className="bg-bg-dashboard">
-                    <HeaderDashBoard/>
-                    <DashboardBody/>
+                <div className="bg-bg-dashboard flex">
+                    <NavDashboard/>
+                    <div className={"w-full"}>
+                        <HeaderDashBoard/>
+                        <DashboardBody/>
+                    </div>
+
                 </div>
             </>
         ),
